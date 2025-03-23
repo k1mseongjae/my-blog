@@ -6,6 +6,9 @@ import { Navbar } from 'components/nav'
 import Footer from 'components/footer'
 import { baseUrl } from './sitemap'
 import { ThemeProvider } from 'next-themes'
+import { Inter } from 'next/font/google'
+import { Noto_Sans_KR } from 'next/font/google'
+
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -64,7 +67,9 @@ export default function RootLayout({
       suppressHydrationWarning
       className={cx(
         GeistSans.variable,
-        GeistMono.variable
+        GeistMono.variable,
+        inter.variable,
+        notoSansKr.variable
       )}
     >
       <body className="antialiased max-w-xl mx-4 mt-8 sm:mx-auto text-black bg-white dark:text-white dark:bg-black">
@@ -79,3 +84,15 @@ export default function RootLayout({
     </html>
   )
 }
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+})
+
+const notoSansKr = Noto_Sans_KR({
+  subsets: ['latin'],
+  weight: ['400', '700'], // 필요하면 weight 추가
+  variable: '--font-noto',
+})
+

@@ -1,0 +1,1347 @@
+{
+  "object": "page",
+  "id": "1bf67034-7811-807b-b81c-e931e3125cff",
+  "created_time": "2025-03-23T09:39:00.000Z",
+  "last_edited_time": "2025-03-23T10:06:00.000Z",
+  "created_by": {
+    "object": "user",
+    "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+  },
+  "last_edited_by": {
+    "object": "user",
+    "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+  },
+  "cover": null,
+  "icon": null,
+  "parent": {
+    "type": "workspace",
+    "workspace": true
+  },
+  "archived": false,
+  "in_trash": false,
+  "properties": {
+    "title": {
+      "id": "title",
+      "type": "title",
+      "title": [
+        {
+          "type": "text",
+          "text": {
+            "content": "시작하기",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "시작하기",
+          "href": null
+        }
+      ]
+    }
+  },
+  "url": "https://www.notion.so/1bf670347811807bb81ce931e3125cff",
+  "public_url": null,
+  "request_id": "e456da0a-ac23-4837-a22a-9d349a9f18f4",
+  "blocks": [
+    {
+      "object": "block",
+      "id": "1bf67034-7811-80bf-ab0c-c5e740929138",
+      "parent": {
+        "type": "page_id",
+        "page_id": "1bf67034-7811-807b-b81c-e931e3125cff"
+      },
+      "created_time": "2025-03-23T09:39:00.000Z",
+      "last_edited_time": "2025-03-23T09:39:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "paragraph",
+      "paragraph": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "👋 Notion에 오신 것을 환영합니다!",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "👋 Notion에 오신 것을 환영합니다!",
+            "href": null
+          }
+        ],
+        "color": "default"
+      },
+      "blocks": []
+    },
+    {
+      "object": "block",
+      "id": "1bf67034-7811-8097-855b-e8149e16c877",
+      "parent": {
+        "type": "page_id",
+        "page_id": "1bf67034-7811-807b-b81c-e931e3125cff"
+      },
+      "created_time": "2025-03-23T09:39:00.000Z",
+      "last_edited_time": "2025-03-23T09:39:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "paragraph",
+      "paragraph": {
+        "rich_text": [],
+        "color": "default"
+      },
+      "blocks": []
+    },
+    {
+      "object": "block",
+      "id": "1bf67034-7811-80fa-9ecc-ff0f7bec8759",
+      "parent": {
+        "type": "page_id",
+        "page_id": "1bf67034-7811-807b-b81c-e931e3125cff"
+      },
+      "created_time": "2025-03-23T09:39:00.000Z",
+      "last_edited_time": "2025-03-23T09:39:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "paragraph",
+      "paragraph": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "아래에서 기본 내용을 확인해 주세요.",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "아래에서 기본 내용을 확인해 주세요.",
+            "href": null
+          }
+        ],
+        "color": "default"
+      },
+      "blocks": []
+    },
+    {
+      "object": "block",
+      "id": "1bf67034-7811-8061-acd4-db9d71790dc3",
+      "parent": {
+        "type": "page_id",
+        "page_id": "1bf67034-7811-807b-b81c-e931e3125cff"
+      },
+      "created_time": "2025-03-23T09:39:00.000Z",
+      "last_edited_time": "2025-03-23T09:39:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "to_do",
+      "to_do": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "아무 곳이나 클릭하고 입력을 시작하면 됩니다.",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "아무 곳이나 클릭하고 입력을 시작하면 됩니다.",
+            "href": null
+          }
+        ],
+        "checked": false,
+        "color": "default"
+      },
+      "blocks": []
+    },
+    {
+      "object": "block",
+      "id": "1bf67034-7811-8014-9e76-ece6bb0260c1",
+      "parent": {
+        "type": "page_id",
+        "page_id": "1bf67034-7811-807b-b81c-e931e3125cff"
+      },
+      "created_time": "2025-03-23T09:39:00.000Z",
+      "last_edited_time": "2025-03-23T09:39:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "to_do",
+      "to_do": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "/",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": true,
+              "color": "default"
+            },
+            "plain_text": "/",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "를 누르면 추가할 수 있는 모든 유형의 콘텐츠가 나타납니다. 제목, 동영상, 하위 페이지 등을 자유롭게 추가해 보세요.",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "를 누르면 추가할 수 있는 모든 유형의 콘텐츠가 나타납니다. 제목, 동영상, 하위 페이지 등을 자유롭게 추가해 보세요.",
+            "href": null
+          }
+        ],
+        "checked": false,
+        "color": "default"
+      },
+      "blocks": []
+    },
+    {
+      "object": "block",
+      "id": "1bf67034-7811-8011-b9e4-d929fd64b610",
+      "parent": {
+        "type": "page_id",
+        "page_id": "1bf67034-7811-807b-b81c-e931e3125cff"
+      },
+      "created_time": "2025-03-23T09:39:00.000Z",
+      "last_edited_time": "2025-03-23T09:39:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "to_do",
+      "to_do": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "텍스트를 드래그하면 나타나는 메뉴를 사용하여 ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "텍스트를 드래그하면 나타나는 메뉴를 사용하여 ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "자신이",
+              "link": {
+                "url": "https://www.notion.so/product"
+              }
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "자신이",
+            "href": "https://www.notion.so/product"
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": " ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": " ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "원하는",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "yellow_background"
+            },
+            "plain_text": "원하는",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": " ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": " ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "모든",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": true,
+              "color": "default"
+            },
+            "plain_text": "모든",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": " ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": " ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "방식으로",
+              "link": null
+            },
+            "annotations": {
+              "bold": true,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "방식으로",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": " ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": " ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "쓰기",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": true,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "쓰기",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": " ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": " ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "스타일을 ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": true,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "스타일을 ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "지정해 보세요.",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "지정해 보세요.",
+            "href": null
+          }
+        ],
+        "checked": false,
+        "color": "default"
+      },
+      "blocks": []
+    },
+    {
+      "object": "block",
+      "id": "1bf67034-7811-802f-8c71-f2ed59dee6bb",
+      "parent": {
+        "type": "page_id",
+        "page_id": "1bf67034-7811-807b-b81c-e931e3125cff"
+      },
+      "created_time": "2025-03-23T09:39:00.000Z",
+      "last_edited_time": "2025-03-23T09:39:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "to_do",
+      "to_do": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "이 체크박스 목록 왼쪽에 마우스 커서를 가져가면 ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "이 체크박스 목록 왼쪽에 마우스 커서를 가져가면 ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "⋮⋮",
+              "link": null
+            },
+            "annotations": {
+              "bold": true,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "⋮⋮",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": " 아이콘이 나타납니다. 이 아이콘을 클릭한 상태로 드래그하면 항목을 다른 곳으로 옮길 수 있어요.",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": " 아이콘이 나타납니다. 이 아이콘을 클릭한 상태로 드래그하면 항목을 다른 곳으로 옮길 수 있어요.",
+            "href": null
+          }
+        ],
+        "checked": false,
+        "color": "default"
+      },
+      "blocks": []
+    },
+    {
+      "object": "block",
+      "id": "1bf67034-7811-80bb-9ae7-e3898db80616",
+      "parent": {
+        "type": "page_id",
+        "page_id": "1bf67034-7811-807b-b81c-e931e3125cff"
+      },
+      "created_time": "2025-03-23T09:39:00.000Z",
+      "last_edited_time": "2025-03-23T09:39:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "to_do",
+      "to_do": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "사이드바 상단의 ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "사이드바 상단의 ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "+ 새 페이지",
+              "link": null
+            },
+            "annotations": {
+              "bold": true,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "+ 새 페이지",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "를 클릭하여 새 페이지를 생성할 수 있습니다.",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "를 클릭하여 새 페이지를 생성할 수 있습니다.",
+            "href": null
+          }
+        ],
+        "checked": false,
+        "color": "default"
+      },
+      "blocks": []
+    },
+    {
+      "object": "block",
+      "id": "1bf67034-7811-8092-a045-e46dd9c0eedf",
+      "parent": {
+        "type": "page_id",
+        "page_id": "1bf67034-7811-807b-b81c-e931e3125cff"
+      },
+      "created_time": "2025-03-23T09:39:00.000Z",
+      "last_edited_time": "2025-03-23T09:39:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "to_do",
+      "to_do": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "사이드바에서 ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "사이드바에서 ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "캘린더",
+              "link": null
+            },
+            "annotations": {
+              "bold": true,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "캘린더",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "를 클릭해 일과 생활을 편리하게 관리하세요. Notion Calendar 앱은 Google 캘린더의 모든 이벤트와 통합, 동기화됩니다.",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "를 클릭해 일과 생활을 편리하게 관리하세요. Notion Calendar 앱은 Google 캘린더의 모든 이벤트와 통합, 동기화됩니다.",
+            "href": null
+          }
+        ],
+        "checked": false,
+        "color": "default"
+      },
+      "blocks": []
+    },
+    {
+      "object": "block",
+      "id": "1bf67034-7811-8027-90b9-e9d6c9db1a3e",
+      "parent": {
+        "type": "page_id",
+        "page_id": "1bf67034-7811-807b-b81c-e931e3125cff"
+      },
+      "created_time": "2025-03-23T09:39:00.000Z",
+      "last_edited_time": "2025-03-23T09:39:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "to_do",
+      "to_do": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "이 목록 전체를 드래그해서 선택하고 ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "이 목록 전체를 드래그해서 선택하고 ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "AI에게 요청",
+              "link": null
+            },
+            "annotations": {
+              "bold": true,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "purple"
+            },
+            "plain_text": "AI에게 요청",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "하여 더 많은 팁을 얻어 보세요.",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "하여 더 많은 팁을 얻어 보세요.",
+            "href": null
+          }
+        ],
+        "checked": false,
+        "color": "default"
+      },
+      "blocks": []
+    },
+    {
+      "object": "block",
+      "id": "1bf67034-7811-80a3-88bf-e5e0ae949f21",
+      "parent": {
+        "type": "page_id",
+        "page_id": "1bf67034-7811-807b-b81c-e931e3125cff"
+      },
+      "created_time": "2025-03-23T09:39:00.000Z",
+      "last_edited_time": "2025-03-23T09:39:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "to_do",
+      "to_do": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "사이드바의 ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "사이드바의 ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "템플릿",
+              "link": null
+            },
+            "annotations": {
+              "bold": true,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "템플릿",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "을 클릭해 사전 구성된 페이지로 쉽게 시작할 수도 있어요.",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "을 클릭해 사전 구성된 페이지로 쉽게 시작할 수도 있어요.",
+            "href": null
+          }
+        ],
+        "checked": false,
+        "color": "default"
+      },
+      "blocks": []
+    },
+    {
+      "object": "block",
+      "id": "1bf67034-7811-80e9-98d1-f3d995734ce6",
+      "parent": {
+        "type": "page_id",
+        "page_id": "1bf67034-7811-807b-b81c-e931e3125cff"
+      },
+      "created_time": "2025-03-23T09:39:00.000Z",
+      "last_edited_time": "2025-03-23T09:39:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+      },
+      "has_children": true,
+      "archived": false,
+      "in_trash": false,
+      "type": "toggle",
+      "toggle": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "이런 토글 블록도 가능합니다. 왼쪽의 삼각형 아이콘을 클릭해 유용한 링크를 확인하세요.",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "이런 토글 블록도 가능합니다. 왼쪽의 삼각형 아이콘을 클릭해 유용한 링크를 확인하세요.",
+            "href": null
+          }
+        ],
+        "color": "default"
+      },
+      "blocks": [
+        {
+          "object": "block",
+          "id": "1bf67034-7811-80ea-8d9e-d73f69ccdd25",
+          "parent": {
+            "type": "block_id",
+            "block_id": "1bf67034-7811-80e9-98d1-f3d995734ce6"
+          },
+          "created_time": "2025-03-23T09:39:00.000Z",
+          "last_edited_time": "2025-03-23T09:39:00.000Z",
+          "created_by": {
+            "object": "user",
+            "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+          },
+          "last_edited_by": {
+            "object": "user",
+            "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "bulleted_list_item",
+          "bulleted_list_item": {
+            "rich_text": [
+              {
+                "type": "text",
+                "text": {
+                  "content": "notion.com/templates",
+                  "link": {
+                    "url": "https://www.notion.so/templates"
+                  }
+                },
+                "annotations": {
+                  "bold": true,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "red"
+                },
+                "plain_text": "notion.com/templates",
+                "href": "https://www.notion.so/templates"
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": ": Notion 커뮤니티가 만든 템플릿",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": ": Notion 커뮤니티가 만든 템플릿",
+                "href": null
+              }
+            ],
+            "color": "default"
+          },
+          "blocks": []
+        },
+        {
+          "object": "block",
+          "id": "1bf67034-7811-80f8-9979-f640db7f2779",
+          "parent": {
+            "type": "block_id",
+            "block_id": "1bf67034-7811-80e9-98d1-f3d995734ce6"
+          },
+          "created_time": "2025-03-23T09:39:00.000Z",
+          "last_edited_time": "2025-03-23T09:39:00.000Z",
+          "created_by": {
+            "object": "user",
+            "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+          },
+          "last_edited_by": {
+            "object": "user",
+            "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "bulleted_list_item",
+          "bulleted_list_item": {
+            "rich_text": [
+              {
+                "type": "text",
+                "text": {
+                  "content": "notion.com/help",
+                  "link": {
+                    "url": "https://www.notion.so/help"
+                  }
+                },
+                "annotations": {
+                  "bold": true,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "red"
+                },
+                "plain_text": "notion.com/help",
+                "href": "https://www.notion.so/help"
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": ":",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": ":",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": " ",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": true,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": " ",
+                "href": null
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": "Notion 가이드와 자주 묻는 질문(FAQ)",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": "Notion 가이드와 자주 묻는 질문(FAQ)",
+                "href": null
+              }
+            ],
+            "color": "default"
+          },
+          "blocks": []
+        },
+        {
+          "object": "block",
+          "id": "1bf67034-7811-802a-9934-ec489bf1cb7d",
+          "parent": {
+            "type": "block_id",
+            "block_id": "1bf67034-7811-80e9-98d1-f3d995734ce6"
+          },
+          "created_time": "2025-03-23T09:39:00.000Z",
+          "last_edited_time": "2025-03-23T09:39:00.000Z",
+          "created_by": {
+            "object": "user",
+            "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+          },
+          "last_edited_by": {
+            "object": "user",
+            "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "bulleted_list_item",
+          "bulleted_list_item": {
+            "rich_text": [
+              {
+                "type": "text",
+                "text": {
+                  "content": "notion.com/guides",
+                  "link": {
+                    "url": "http://notion.com/guides"
+                  }
+                },
+                "annotations": {
+                  "bold": true,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "red"
+                },
+                "plain_text": "notion.com/guides",
+                "href": "http://notion.com/guides"
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": ": Notion 전문가가 되기 위한 동영상과 튜토리얼",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": ": Notion 전문가가 되기 위한 동영상과 튜토리얼",
+                "href": null
+              }
+            ],
+            "color": "default"
+          },
+          "blocks": []
+        },
+        {
+          "object": "block",
+          "id": "1bf67034-7811-8064-b29a-f16d0b9e1c6d",
+          "parent": {
+            "type": "block_id",
+            "block_id": "1bf67034-7811-80e9-98d1-f3d995734ce6"
+          },
+          "created_time": "2025-03-23T09:39:00.000Z",
+          "last_edited_time": "2025-03-23T09:39:00.000Z",
+          "created_by": {
+            "object": "user",
+            "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+          },
+          "last_edited_by": {
+            "object": "user",
+            "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+          },
+          "has_children": false,
+          "archived": false,
+          "in_trash": false,
+          "type": "bulleted_list_item",
+          "bulleted_list_item": {
+            "rich_text": [
+              {
+                "type": "text",
+                "text": {
+                  "content": "calendar.notion.com",
+                  "link": {
+                    "url": "http://calendar.notion.so/"
+                  }
+                },
+                "annotations": {
+                  "bold": true,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "red"
+                },
+                "plain_text": "calendar.notion.com",
+                "href": "http://calendar.notion.so/"
+              },
+              {
+                "type": "text",
+                "text": {
+                  "content": ": Notion Calendar 앱으로 일과 생활 관리하기",
+                  "link": null
+                },
+                "annotations": {
+                  "bold": false,
+                  "italic": false,
+                  "strikethrough": false,
+                  "underline": false,
+                  "code": false,
+                  "color": "default"
+                },
+                "plain_text": ": Notion Calendar 앱으로 일과 생활 관리하기",
+                "href": null
+              }
+            ],
+            "color": "default"
+          },
+          "blocks": []
+        }
+      ]
+    },
+    {
+      "object": "block",
+      "id": "1bf67034-7811-80cc-bb30-f51ec1630b28",
+      "parent": {
+        "type": "page_id",
+        "page_id": "1bf67034-7811-807b-b81c-e931e3125cff"
+      },
+      "created_time": "2025-03-23T09:39:00.000Z",
+      "last_edited_time": "2025-03-23T09:39:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "paragraph",
+      "paragraph": {
+        "rich_text": [],
+        "color": "default"
+      },
+      "blocks": []
+    },
+    {
+      "object": "block",
+      "id": "1bf67034-7811-802c-ba89-db485907746e",
+      "parent": {
+        "type": "page_id",
+        "page_id": "1bf67034-7811-807b-b81c-e931e3125cff"
+      },
+      "created_time": "2025-03-23T09:39:00.000Z",
+      "last_edited_time": "2025-03-23T09:39:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "paragraph",
+      "paragraph": {
+        "rich_text": [],
+        "color": "gray"
+      },
+      "blocks": []
+    },
+    {
+      "object": "block",
+      "id": "1bf67034-7811-80d6-910c-c51582b9c5e1",
+      "parent": {
+        "type": "page_id",
+        "page_id": "1bf67034-7811-807b-b81c-e931e3125cff"
+      },
+      "created_time": "2025-03-23T09:39:00.000Z",
+      "last_edited_time": "2025-03-23T09:39:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "89e85b1c-f123-455d-b1e1-fff8bbb42468"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "paragraph",
+      "paragraph": {
+        "rich_text": [],
+        "color": "default"
+      },
+      "blocks": []
+    }
+  ]
+}
