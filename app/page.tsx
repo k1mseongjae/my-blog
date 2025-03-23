@@ -12,25 +12,17 @@ export default function Page() {
           height={100}
           className="rounded-full mr-4"
         />
-        <h1 className="text-2xl font-semibold tracking-tighter">
-          My Portfolio
+        <h1 className="text-5xl font-bytesized animate-pulse">
+          Welcome to k1mseongjae's blog
         </h1>
       </div>
-      <p className="mb-4">
-        {`Whats up ! `}
-        <a 
-          href="https://github.com/k1mseongjae" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="text-blue-600 hover:text-blue-800 underline font-medium transition duration-300 ease-in-out"
-        >
-          Notionpresso
-        </a>
-        {`. I'm efficiently managing content by utilizing Notion as a CMS. 
-        I'll be sharing stories about development, technology, and daily life. 
-        Stay tuned and thanks for your interest!`}
+      <p className="text-2xl font-kiranghaerang mb-4 text-right">
+        {`부담없이 쓰는 공간👀`}
       </p>
-      <div className="my-8">
+      <p className="text-1xl font-kiranghaerang mb-4 text-right">
+        {`Since 2025`}
+      </p>
+      <div className="text-2xl font-dongle my-8">
         <BlogPosts />
       </div>
     </section>

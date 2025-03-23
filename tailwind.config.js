@@ -5,7 +5,14 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['Inter', 'Noto sans KR','sans-serif'],
+        bytesized: ['Bytesized', 'monospace'],
+        kiranghaerang: ['Kirang Haerang', 'monospace'],
+        dongle: ['Dongle', 'monospace'],
+      },
+    },
     screens: {
       'sm': '38rem',
     }

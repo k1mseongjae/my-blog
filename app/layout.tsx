@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     default: 'k1mseongjae\'s world',
     template: '%s | k1mseongjae\'s world',
   },
-  description: 'B-log of k1mseongjae',
+  description: 'Coding, writing, and sharing stories about development, technology, and daily life.',
   openGraph: {
     title: 'Hello !',
     description: 'This is my personal blog !',

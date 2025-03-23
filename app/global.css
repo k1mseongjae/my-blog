@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Bytesized&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kirang+Haerang&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dongle&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 ::selection {
   background-color: #47a3f3;
