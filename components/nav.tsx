@@ -12,7 +12,7 @@ const navItems = {
   '/guide': {
     name: 'guide',
   },
-  'https://github.com/notionpresso': {
+  'https://github.com/k1mseongjae': {
     name: 'github',
   },
 }

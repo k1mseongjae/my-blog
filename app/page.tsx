@@ -17,9 +17,9 @@ export default function Page() {
         </h1>
       </div>
       <p className="mb-4">
-        {`Hello! This blog is created using `}
+        {`Whats up ! `}
         <a 
-          href="https://github.com/notionpresso" 
+          href="https://github.com/k1mseongjae" 
           target="_blank" 
           rel="noopener noreferrer"
           className="text-blue-600 hover:text-blue-800 underline font-medium transition duration-300 ease-in-out"
