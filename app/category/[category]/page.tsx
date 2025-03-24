@@ -10,9 +10,9 @@ export default function CategoryPage({ params }: { params: { category: string } 
 
   return (
     <section>
-      <h1 className="text-3xl font-dongle capitalize mb-6">{category} !</h1>
+      <h1 className="text-3xl font-kiranghaerang capitalize mb-6 ">{category} !</h1>
       {filteredPosts.map((post) => (
-        <div key={post.slug} className="my-4">
+        <div key={post.slug} className="my-4  bg-neutral-200 ">
           <Link href={`/blog/${post.slug}`} className="text-2xl font-dongle hover:underline">
             {post.title}
           </Link>
