@@ -1,14 +1,18 @@
-import posts from "content/posts"
+'use client'
 
-export const baseUrl = 'https://nextjs-blog-template.pages.dev'
+import { fetchPostsFromNotion } from '@/lib/notion'
 
-export default async function sitemap2() {
-  let blogs = posts.map((post) => ({
+export const baseUrl = 'https://k1mseongjae.com'
+
+export default async function sitemap() {
+  const posts = await fetchPostsFromNotion()
+
+  const blogs = posts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
     lastModified: post.date,
   }))
 
-  let routes = ['', '/blog', '/guide', '/guide/kr'].map((route) => ({
+  const routes = ['', '/blog', '/guide', '/guide/kr'].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString().split('T')[0],
   }))

@@ -4,14 +4,14 @@ import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import { Navbar } from 'components/nav'
 import Footer from 'components/footer'
-import { baseUrl } from './sitemap'
+//
 import { ThemeProvider } from 'next-themes'
 import { Inter } from 'next/font/google'
 import { Noto_Sans_KR } from 'next/font/google'
 
 
 export const metadata: Metadata = {
-  metadataBase: new URL(baseUrl),
+  metadataBase: new URL('https://k1mseongjae.com'),
   title: {
     default: 'k1mseongjae\'s world',
     template: '%s | k1mseongjae\'s world',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Hello !',
     description: 'This is my personal blog !',
-    url: baseUrl,
+    url: 'https://k1mseongjae.com',
     siteName: 'k1mseongjae\'s world',
     locale: 'en_US',
     type: 'website',

@@ -11,16 +11,17 @@ export async function fetchPostsFromNotion() {
     }
   });
 
+
   if (!res.ok) throw new Error("❌ Notion fetch 실패");
 
   const data = await res.json();
 
   return data.results.map((page: any) => ({
     id: page.id,
-    title: page.properties.title.title[0].plain_text,
-    slug: page.properties.slug.rich_text[0].plain_text,
-    date: page.properties.date.date.start,
-    category: page.properties.category.rich_text[0].plain_text,
-    description: page.properties.description.rich_text[0].plain_text,
+    title: page.properties.Name?.title[0]?.plain_text || 'No Title',
+    slug: page.properties.slug?.rich_text[0]?.plain_text || 'no-slug',
+    date: page.properties.Date?.date?.start || 'no-date',
+    category: page.properties.category?.select?.name || 'no-category',
+    description: page.properties.description?.rich_text[0]?.plain_text || 'no description',
   }));
 }
