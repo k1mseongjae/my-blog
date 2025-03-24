@@ -16,10 +16,10 @@ export default async function Page() {
 
       {/* ✅ 카테고리 버튼 추가 */}
       <div className="flex space-x-4 my-6">
-        <Link href="/category/study" className="font-kiranghaerang text-1.5xl px-4 py-2 bg-neutral-200 rounded hover:bg-neutral-300">
+        <Link href="/category/study" className="font-kiranghaerang text-1.5xl px-4 py-2 bg-neutral-200 dark:bg-zinc-700 p-4 rounded-lg hover:bg-neutral-300">
           Study
         </Link>
-        <Link href="/category/daily" className="font-kiranghaerang text-1.5xl px-4 py-2 bg-neutral-200 rounded hover:bg-neutral-300">
+        <Link href="/category/daily" className="font-kiranghaerang text-1.5xl px-4 py-2 bg-neutral-200 dark:bg-zinc-700 p-4 rounded-lg hover:bg-neutral-300">
           Daily
         </Link>
       </div>

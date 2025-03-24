@@ -14,7 +14,7 @@ export default async function CategoryPage({ params }: { params: { category: str
     <section>
       <h1 className="text-3xl font-kiranghaerang capitalize mb-6 ">{category} 카테고리</h1>
       {filteredPosts.map((post) => (
-        <div key={post.slug} className="my-4 bg-neutral-200">
+        <div key={post.slug} className="my-4 bg-neutral-200 dark:bg-zinc-700 p-4 rounded-lg">
           <Link href={`/blog/${post.slug}`} className="text-2xl font-dongle hover:underline">
             {post.title}
           </Link>

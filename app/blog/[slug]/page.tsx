@@ -66,8 +66,10 @@ export default async function Blog({ params }: { params: { slug: string } }) {
           }),
         }}
       />
-      <NotionRenderer post={post} />
+      
+      <NotionRenderer post={post}/>
       <Comment />
+     
     </section>
   )
 }
