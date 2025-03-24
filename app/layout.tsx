@@ -4,10 +4,9 @@ import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import { Navbar } from 'components/nav'
 import Footer from 'components/footer'
-//
-import { ThemeProvider } from 'next-themes'
 import { Inter } from 'next/font/google'
 import { Noto_Sans_KR } from 'next/font/google'
+import Providers from '@/components/providers'
 
 
 export const metadata: Metadata = {
@@ -73,13 +72,13 @@ export default function RootLayout({
       )}
     >
       <body className="antialiased max-w-xl mx-4 mt-8 sm:mx-auto text-black bg-white dark:text-white dark:bg-black">
-        <ThemeProvider attribute='class' defaultTheme='light' >
+        <Providers>
           <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
             <Navbar />
             {children}
             <Footer />
           </main>
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   )
