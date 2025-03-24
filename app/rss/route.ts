@@ -1,17 +1,20 @@
 import { baseUrl } from 'app/sitemap'
-import { fetchPostsFromNotion } from '@/lib/notion'
+import posts from 'content/posts'
 
-export const runtime = 'edge'
-export const revalidate = 0  // ✅ 여기에 추가 (ISR 무시하고 매번 fresh하게)
+export const runtime = 'edge';
 
 export async function GET() {
-  const posts = await fetchPostsFromNotion()
 
   const itemsXml = posts
-    .sort((a, b) => (new Date(a.date) > new Date(b.date) ? -1 : 1))
+    .sort((a, b) => {
+      if (new Date(a.date) > new Date(b.date)) {
+        return -1
+      }
+      return 1
+    })
     .map(
-      (post) => `
-        <item>
+      (post) =>
+        `<item>
           <title>${post.title}</title>
           <link>${baseUrl}/blog/${post.slug}</link>
           <description>${post.description}</description>
@@ -32,7 +35,7 @@ export async function GET() {
 
   return new Response(rssFeed, {
     headers: {
-      'Content-Type': 'application/xml',
+      'Content-Type': 'text/xml',
     },
   })
 }
