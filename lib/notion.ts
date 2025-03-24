@@ -6,24 +6,38 @@ const notionHeaders = {
   "Content-Type": "application/json",
 };
 
+async function fetchPageBlocks(pageId: string) {
+  const res = await fetch(`https://api.notion.com/v1/blocks/${pageId}/children`, {
+    headers: notionHeaders,
+  });
+  const data = await res.json();
+  return data.results || [];
+}
+
 export async function fetchPostsFromNotion() {
   const res = await fetch(`https://api.notion.com/v1/databases/${DATABASE_ID}/query`, {
     method: "POST",
     headers: notionHeaders,
+    next: { revalidate: 0 },
   });
 
   if (!res.ok) throw new Error("❌ Notion fetch 실패");
 
   const data = await res.json();
 
-  // 페이지 돌면서 블록까지 fetch
   const posts = await Promise.all(
     data.results.map(async (page: any) => {
-      // block 불러오기
-      const blocksRes = await fetch(`https://api.notion.com/v1/blocks/${page.id}/children`, {
-        headers: notionHeaders,
-      });
-      const blocksData = await blocksRes.json();
+      const notionPageUrl = page.properties.content?.rich_text[0]?.plain_text;
+      let blocks = [];
+
+      // content 칸에 notion page url이 있다면 해당 페이지 블록 가져오기
+      if (notionPageUrl) {
+        const pageIdMatch = notionPageUrl.match(/([a-f0-9]{32})/);
+        const pageIdFromUrl = pageIdMatch ? pageIdMatch[1] : null;
+        if (pageIdFromUrl) {
+          blocks = await fetchPageBlocks(pageIdFromUrl);
+        }
+      }
 
       return {
         id: page.id,
@@ -32,10 +46,11 @@ export async function fetchPostsFromNotion() {
         date: page.properties.Date?.date?.start || 'no-date',
         category: page.properties.category?.select?.name || 'no-category',
         description: page.properties.description?.rich_text[0]?.plain_text || 'no description',
-        content: { blocks: blocksData.results || [] }, // blocks 추가!
+        content: { blocks }, // 이걸 제대로 채워야 함
       };
     })
   );
 
   return posts;
 }
+
