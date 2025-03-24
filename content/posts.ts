@@ -1,9 +1,9 @@
-import post1 from '../notion-data/1bf67034-7811-80fa-b780-d65be7d18fa1.json'
+import post1 from '../notion-data/1c067034-7811-809f-a639-f46047ff4ea4.json'
 import post2 from '../notion-data/127ce18c-fd83-805c-bebd-d6772e18bf02.json'
 
 const posts = [
   {
-    title: "첫번째 포스트",
+    title: post1.properties.title.title[0].plain_text,
     slug: "first-post",
     content: post1,
     date: "2025-03-23",
