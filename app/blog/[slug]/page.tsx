@@ -2,9 +2,10 @@ import { notFound } from 'next/navigation'
 import { fetchPostsFromNotion } from '@/lib/notion'
 import NotionRenderer from 'components/notion-renderer'
 import Comment from 'components/comment'
-import { baseUrl } from 'app/sitemap'
+// import { baseUrl } from 'app/sitemap'
 
 export const runtime = 'edge'
+const baseUrl = 'https://kimsongje.com';
 
 export async function generateStaticParams() {
   const posts = await fetchPostsFromNotion()
