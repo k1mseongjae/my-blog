@@ -7,6 +7,7 @@ const posts = [
     slug: "first-post",
     content: post1,
     date: "2025-03-23",
+    category: "daily",
     description: "위대한 첫 발걸음ㄷㄷㄷ",
     image: undefined
   },
@@ -15,6 +16,7 @@ const posts = [
     slug: "naver-search-bar-ux",
     content: post2,
     date: "2023-10-23",
+    category: "study",
     description: "Explore the UX analysis of Naver's search bar and strategies for replicating its features. The post examines the UX triggers, selection of search results, and the refreshing of result lists. It also compares coding approaches for implementing search bar functionalities, aiming for a concise and effective execution.",
     image: undefined
   }
@@ -27,6 +29,7 @@ export type Post = {
   slug: string;
   content: { blocks: any[] };
   date: string;
+  category: string;
   description: string;
   image?: string;
 };
