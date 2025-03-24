@@ -14,7 +14,7 @@ const ThemeToggle = () => {
   return (
     <button
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800"
+      className="transition-all transform hover:scale-110 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800"
     >
       {/*{theme === 'dark' ? '🌙' : '☀️'} */
       theme === 'dark' ? ('😎') : ('😊')}

@@ -18,7 +18,9 @@ export default function Page() {
         <Link href="/category/daily" className="font-kiranghaerang text-1.5xl px-4 py-2 bg-neutral-200 rounded hover:bg-neutral-300">Daily</Link>
       </div>
       
-      <BlogPosts />
+      <div className="text-2xl font-dongle">
+        <BlogPosts />
+      </div>
     </section>
   )
 }
