@@ -20,6 +20,8 @@ module.exports = {
       'sm': '38rem',
     }
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar-hide'),
+  ],
   darkMode: 'class'
 }
