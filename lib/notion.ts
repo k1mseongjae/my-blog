@@ -6,13 +6,23 @@ const notionHeaders = {
   "Content-Type": "application/json",
 };
 
-export async function fetchBlockChildren(blockId: string) {
+export async function fetchBlockChildren(blockId: string): Promise<any[]> {
   const res = await fetch(`https://api.notion.com/v1/blocks/${blockId}/children`, {
     headers: notionHeaders,
   });
   const data = await res.json();
-  return data.results || [];
+
+  const childrenWithNested = await Promise.all(data.results.map(async (child: any) => {
+    if (child.has_children) {
+      const nestedChildren = await fetchBlockChildren(child.id);
+      return { ...child, children: nestedChildren };
+    }
+    return child;
+  }));
+
+  return childrenWithNested;
 }
+
 
 async function fetchPageBlocks(pageId: string) {
   let results: any[] = [];
@@ -37,6 +47,7 @@ async function fetchPageBlocks(pageId: string) {
 
   return blocksWithChildren;
 }
+
 
 
 export async function fetchPostsFromNotion() {

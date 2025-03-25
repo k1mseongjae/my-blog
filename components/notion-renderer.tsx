@@ -1,18 +1,73 @@
 'use client'
 
+import React from 'react';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
+
 export default function NotionRenderer({ post, className }: { post: any, className?: string }) {
   if (!post) return <div>포스트를 불러올 수 없습니다.</div>
   
   const renderContent = (block: any) => {
+
     if (block.type === 'paragraph') {
+      const hasText = block.paragraph.rich_text.some((text: any) => text.plain_text.trim() !== '');
       return (
-        <p key={block.id} className="my-2 text-lg">
-          {block.paragraph.rich_text.map((text: any, idx: number) => (
-            <span key={idx}>{text.plain_text}</span>
-          ))}
+        <p key={block.id} className="my-2 text-lg min-h-[1rem]">
+          {hasText
+            ? block.paragraph.rich_text.map((text: any, idx: number) =>
+                text.plain_text.split('\n').map((line: string, lineIdx: number) => (
+                  text.href ? (
+                    <a 
+                      key={`${idx}-${lineIdx}`} 
+                      href={text.href} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="text-gray-400 underline"
+                    >
+                      {line}
+                    </a>
+                  ) : (
+                    <React.Fragment key={`${idx}-${lineIdx}`}>
+                      {line}
+                      <br />
+                    </React.Fragment>
+                  )
+                ))
+              )
+            : <br />}
         </p>
-      )
+      );
     }
+    
+    
+    
+
+    if (block.type === 'image') {
+      const url = block.image.file?.url || block.image.external?.url;
+      return (
+        <img 
+          key={block.id} 
+          src={url} 
+          alt="notion image" 
+          className="my-4 max-w-full rounded"
+        />
+      );
+    }
+
+    if (block.type === 'to_do') {
+      return (
+        <div key={block.id} className="flex items-center my-2">
+          <input type="checkbox" checked={block.to_do.checked} readOnly className="mr-2" />
+          <span className={block.to_do.checked ? 'line-through text-gray-500' : ''}>
+            {block.to_do.rich_text.map((text: any, idx: number) => (
+              <span key={idx}>{text.plain_text}</span>
+            ))}
+          </span>
+        </div>
+      );
+    }
+    
 
     if (block.type === 'heading_1') {
       return (
@@ -83,16 +138,37 @@ export default function NotionRenderer({ post, className }: { post: any, classNa
         </details>
       );
     }
-
+    
     if (block.type === 'code') {
+      const codeContent = block.code.rich_text.map((text: any) => text.plain_text).join('');
       return (
-        <pre key={block.id} className="bg-gray-800 text-white p-4 rounded my-4">
-          <code>{block.code.rich_text.map((text: any, idx: number) => (
-            <span key={idx}>{text.plain_text}</span>
-          ))}</code>
-        </pre>
+        <div 
+          key={block.id} 
+          className="my-4 rounded bg-gray-900 overflow-x-auto overflow-y-hidden"
+        >
+          <SyntaxHighlighter
+            language={block.code.language}
+            style={oneDark}
+            wrapLongLines={false}
+            PreTag="div"
+            customStyle={{
+              //background: 'transparent',
+              fontSize: '0.75rem',
+              padding: '0.75rem',
+              minWidth: '100%',
+              maxWidth: '100%',
+              //color: '#E5E7EB',
+            }}
+          >
+            {codeContent}
+          </SyntaxHighlighter>
+        </div>
       )
     }
+    
+    
+    
+    
 
     if (block.type === 'quote') {
       return (
@@ -131,6 +207,8 @@ export default function NotionRenderer({ post, className }: { post: any, classNa
 
     return null
   }
+
+  
 
   return (
     <div className="font-stylish text-lg leading-relaxed">
