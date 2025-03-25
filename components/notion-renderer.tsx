@@ -77,11 +77,11 @@ export default function NotionRenderer({ post, className }: { post: any, classNa
             ))}
           </summary>
           <div className="pl-4">
-            {/* children이 있을 때만 map() 수행 */}
-            {block.toggle.children?.map((child: any) => renderContent(child)) || null}
+            {/* children 렌더링 */}
+            {block.children?.map((child: any) => renderContent(child))}
           </div>
         </details>
-      )
+      );
     }
 
     if (block.type === 'code') {
@@ -104,12 +104,37 @@ export default function NotionRenderer({ post, className }: { post: any, classNa
       )
     }
 
+    if (block.type === 'table') {
+      return (
+        <table key={block.id} className="w-full my-4 border-collapse table-auto border rounded-lg">
+          <tbody>
+            {block.children?.map((row: any) => (
+              row.type === 'table_row' ? (
+                <tr key={row.id} className="border hover:bg-gray-50">
+                  {row.table_row.cells.map((cell: any, idx: number) => (
+                    <td 
+                      key={idx} 
+                      className="border p-4 text-left min-w-[120px] whitespace-nowrap"
+                    >
+                      {cell.map((text: any, textIdx: number) => (
+                        <span key={textIdx}>{text.plain_text}</span>
+                      ))}
+                    </td>
+                  ))}
+                </tr>
+              ) : null
+            ))}
+          </tbody>
+        </table>
+      );
+    }
+
     return null
   }
 
   return (
-    <div>
-      <h1 className="text-4xl font-bold mb-6">{post.title}</h1>
+    <div className="font-stylish text-lg leading-relaxed">
+      <h1 className="text-5xl font-bold mb-6">{post.title}</h1>
 
       {post.content?.blocks?.length > 0 ? (
         post.content.blocks.map((block: any) => renderContent(block))

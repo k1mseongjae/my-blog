@@ -6,13 +6,38 @@ const notionHeaders = {
   "Content-Type": "application/json",
 };
 
-async function fetchPageBlocks(pageId: string) {
-  const res = await fetch(`https://api.notion.com/v1/blocks/${pageId}/children`, {
+export async function fetchBlockChildren(blockId: string) {
+  const res = await fetch(`https://api.notion.com/v1/blocks/${blockId}/children`, {
     headers: notionHeaders,
   });
   const data = await res.json();
   return data.results || [];
 }
+
+async function fetchPageBlocks(pageId: string) {
+  let results: any[] = [];
+  let cursor: string | undefined = undefined;
+
+  do {
+    const res = await fetch(`https://api.notion.com/v1/blocks/${pageId}/children${cursor ? `?start_cursor=${cursor}` : ''}`, {
+      headers: notionHeaders,
+    });
+    const data = await res.json();
+    results = results.concat(data.results);
+    cursor = data.has_more ? data.next_cursor : undefined;
+  } while (cursor);
+
+  const blocksWithChildren = await Promise.all(results.map(async (block: any) => {
+    if (block.has_children) {
+      const children = await fetchBlockChildren(block.id);
+      return { ...block, children };
+    }
+    return block;
+  }));
+
+  return blocksWithChildren;
+}
+
 
 export async function fetchPostsFromNotion() {
   const res = await fetch(`https://api.notion.com/v1/databases/${DATABASE_ID}/query`, {
@@ -28,8 +53,9 @@ export async function fetchPostsFromNotion() {
   const posts = await Promise.all(
     data.results.map(async (page: any) => {
       const notionPageUrl = page.properties.content?.rich_text[0]?.plain_text;
-      let blocks = [];
+      let blocks: any[] = [];
 
+      
       // content 칸에 notion page url이 있다면 해당 페이지 블록 가져오기
       if (notionPageUrl) {
         const pageIdMatch = notionPageUrl.match(/([a-f0-9]{32})/);
@@ -46,11 +72,10 @@ export async function fetchPostsFromNotion() {
         date: page.properties.Date?.date?.start || 'no-date',
         category: page.properties.category?.select?.name || 'no-category',
         description: page.properties.description?.rich_text[0]?.plain_text || 'no description',
-        content: { blocks }, // 이걸 제대로 채워야 함
+        content: { blocks }, // children까지 다 채워진 상태
       };
     })
   );
 
   return posts;
 }
-

@@ -11,6 +11,9 @@ module.exports = {
         bytesized: ['Bytesized', 'monospace'],
         kiranghaerang: ['Kirang Haerang', 'monospace'],
         dongle: ['Dongle', 'monospace'],
+        stylish: ['Stylish', 'monospace'],
+
+
       },
     },
     screens: {
