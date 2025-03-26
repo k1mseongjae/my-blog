@@ -28,7 +28,7 @@ export default function ClientHome({ posts }: { posts: any }) {
         </h1>
       </div>
 
-      <p className="text-2xl font-kiranghaerang mb-4 text-right">그의 흔적</p>
+      <p className="text-2xl font-kiranghaerang mb-4 text-right">그의 흔적😶</p>
       <p className="text-1xl font-kiranghaerang mb-4 text-right">Since 2025</p>
 
       <div className="text-2xl font-dongle my-8">

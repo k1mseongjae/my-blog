@@ -7,23 +7,24 @@ import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 export default function NotionRenderer({ post, className }: { post: any, className?: string }) {
   if (!post) return <div>포스트를 불러올 수 없습니다.</div>
 
+  const renderRichText = (richTextArray: any[]) => richTextArray.map((text: any, idx: number) => (
+    <span
+      key={idx}
+      className={`
+        ${text.annotations.bold ? 'font-bold' : ''}
+        ${text.annotations.italic ? 'italic' : ''}
+        ${text.annotations.strikethrough ? 'line-through' : ''}
+        ${text.annotations.underline ? 'underline' : ''}
+        ${text.annotations.code ? 'bg-gray-200 font-mono px-1 py-0.5 rounded' : ''}
+      `}
+    >
+      {text.plain_text}
+    </span>
+  ));
+
   const renderContent = (block: any): React.ReactNode => {
     let content;
-
-    const renderRichText = (richTextArray: any[]) => richTextArray.map((text: any, idx: number) => (
-      <span
-        key={idx}
-        className={`
-          ${text.annotations.bold ? 'font-bold' : ''}
-          ${text.annotations.italic ? 'italic' : ''}
-          ${text.annotations.strikethrough ? 'line-through' : ''}
-          ${text.annotations.underline ? 'underline' : ''}
-          ${text.annotations.code ? 'bg-gray-200 font-mono px-1 py-0.5 rounded' : ''}
-        `}
-      >
-        {text.plain_text}
-      </span>
-    ));
+    let childrenHandledInside = false;
 
     if (block.type === 'paragraph') {
       const hasText = block.paragraph.rich_text.some((text: any) => text.plain_text.trim() !== '');
@@ -32,6 +33,7 @@ export default function NotionRenderer({ post, className }: { post: any, classNa
           {hasText ? renderRichText(block.paragraph.rich_text) : <br />}
         </p>
       );
+
     } else if (block.type === 'image') {
       const url = block.image.file?.url || block.image.external?.url;
       content = <img src={url} alt="notion image" className="my-4 max-w-full rounded" />;
@@ -80,6 +82,7 @@ export default function NotionRenderer({ post, className }: { post: any, classNa
           </div>
         </details>
       );
+      childrenHandledInside = true;
 
     } else if (block.type === 'code') {
       const codeContent = block.code.rich_text.map((text: any) => text.plain_text).join('');
@@ -122,12 +125,13 @@ export default function NotionRenderer({ post, className }: { post: any, classNa
           </tbody>
         </table>
       );
+      childrenHandledInside = true;
     }
 
     return (
       <div key={block.id}>
         {content}
-        {block.children?.map((child: any) => renderContent(child))}
+        {!childrenHandledInside && block.children?.map((child: any) => renderContent(child))}
       </div>
     );
   };
