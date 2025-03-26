@@ -7,20 +7,31 @@ import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 export default function NotionRenderer({ post, className }: { post: any, className?: string }) {
   if (!post) return <div>포스트를 불러올 수 없습니다.</div>
 
-  const renderRichText = (richTextArray: any[]) => richTextArray.map((text: any, idx: number) => (
-    <span
-      key={idx}
-      className={`
-        ${text.annotations.bold ? 'font-bold' : ''}
-        ${text.annotations.italic ? 'italic' : ''}
-        ${text.annotations.strikethrough ? 'line-through' : ''}
-        ${text.annotations.underline ? 'underline' : ''}
-        ${text.annotations.code ? 'bg-gray-200 font-mono px-1 py-0.5 rounded' : ''}
-      `}
-    >
-      {text.plain_text}
-    </span>
-  ));
+  const renderRichText = (richTextArray: any[]) => richTextArray.map((text: any, idx: number) => {
+    const className = `
+      ${text.annotations.bold ? 'font-bold' : ''}
+      ${text.annotations.italic ? 'italic' : ''}
+      ${text.annotations.strikethrough ? 'line-through' : ''}
+      ${text.annotations.underline ? 'underline' : ''}
+      ${text.annotations.code ? 'bg-gray-200 font-mono px-1 py-0.5 rounded' : ''}
+    `;
+
+    return text.href ? (
+      <a
+        key={idx}
+        href={text.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`${className} text-gray-400 hover:underline`}
+      >
+        {text.plain_text}
+      </a>
+    ) : (
+      <span key={idx} className={className}>
+        {text.plain_text}
+      </span>
+    );
+  });
 
   const renderContent = (block: any): React.ReactNode => {
     let content;
