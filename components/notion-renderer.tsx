@@ -47,7 +47,17 @@ export default function NotionRenderer({ post, className }: { post: any, classNa
 
     } else if (block.type === 'image') {
       const url = block.image.file?.url || block.image.external?.url;
-      content = <img src={url} alt="notion image" className="my-4 max-w-full rounded" />;
+      const caption = block.image.caption?.[0]?.plain_text;
+      content = (
+        <figure className="my-6 text-center">
+          <img src={url} alt={caption || 'notion image'} className="mx-auto max-w-full rounded" />
+          {caption && (
+            <figcaption className="text-sm text-gray-500 mt-2">
+              {caption}
+            </figcaption>
+          )}
+        </figure>
+      );
 
     } else if (block.type === 'to_do') {
       content = (
@@ -118,6 +128,20 @@ export default function NotionRenderer({ post, className }: { post: any, classNa
         </blockquote>
       );
 
+    } else if (block.type === 'callout') {
+      content = (
+        <div className="my-4 p-4 rounded-lg border flex items-start gap-3 bg-gray-50 dark:bg-gray-800">
+          <div className="text-xl">{block.callout.icon?.emoji}</div>
+          <div className="flex-1">
+            {block.callout.rich_text.map((text: any, idx: number) => (
+              <p key={idx}>{text.plain_text}</p>
+            ))}
+            {block.children?.map((child: any) => renderContent(child))}
+          </div>
+        </div>
+      );
+      childrenHandledInside = true;
+
     } else if (block.type === 'table') {
       content = (
         <table className="w-full my-4 border-collapse table-auto border rounded-lg">
@@ -157,4 +181,4 @@ export default function NotionRenderer({ post, className }: { post: any, classNa
       )}
     </div>
   );
-} 
+}
