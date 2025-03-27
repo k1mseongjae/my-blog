@@ -81,16 +81,24 @@ export default function NotionRenderer({ post, className }: { post: any, classNa
     } else if (block.type === 'bulleted_list_item') {
       content = (
         <ul className="list-disc pl-5 my-2">
-          <li className="whitespace-pre-wrap">{renderRichText(block.bulleted_list_item.rich_text)}</li>
+          <li className="whitespace-pre-wrap">
+            {renderRichText(block.bulleted_list_item.rich_text)}
+            {block.children?.map((child: any) => renderContent(child))}
+          </li>
         </ul>
       );
+      childrenHandledInside = true;
 
     } else if (block.type === 'numbered_list_item') {
       content = (
         <ol className="list-decimal pl-5 my-2">
-          <li className="whitespace-pre-wrap">{renderRichText(block.numbered_list_item.rich_text)}</li>
+          <li className="whitespace-pre-wrap">
+            {renderRichText(block.numbered_list_item.rich_text)}
+            {block.children?.map((child: any) => renderContent(child))}
+          </li>
         </ol>
       );
+      childrenHandledInside = true;
 
     } else if (block.type === 'toggle') {
       content = (
