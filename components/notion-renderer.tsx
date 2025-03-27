@@ -8,12 +8,27 @@ export default function NotionRenderer({ post, className }: { post: any, classNa
   if (!post) return <div>포스트를 불러올 수 없습니다.</div>
 
   const renderRichText = (richTextArray: any[]) => richTextArray.map((text: any, idx: number) => {
+    const color = text.annotations.color;
+    const colorMap: Record<string, string> = {
+      red: 'text-red-500',
+      orange: 'text-orange-500',
+      yellow: 'text-yellow-500',
+      green: 'text-green-500',
+      blue: 'text-blue-500',
+      purple: 'text-purple-500',
+      pink: 'text-pink-500',
+      brown: 'text-amber-700',
+      gray: 'text-gray-500',
+    };
+    const colorClass = color && color !== 'default' ? colorMap[color.replace('_background', '')] || '' : '';
+
     const className = `
       ${text.annotations.bold ? 'font-bold' : ''}
       ${text.annotations.italic ? 'italic' : ''}
       ${text.annotations.strikethrough ? 'line-through' : ''}
       ${text.annotations.underline ? 'underline' : ''}
       ${text.annotations.code ? 'bg-gray-200 font-mono px-1 py-0.5 rounded' : ''}
+      ${colorClass}
     `;
 
     return text.href ? (
@@ -33,7 +48,7 @@ export default function NotionRenderer({ post, className }: { post: any, classNa
     );
   });
 
-  const renderContent = (block: any): React.ReactNode => {
+  const renderContent = (block: any, index?: number): React.ReactNode => {
     let content;
     let childrenHandledInside = false;
 
@@ -69,7 +84,11 @@ export default function NotionRenderer({ post, className }: { post: any, classNa
         </div>
       );
 
-    } else if (block.type === 'heading_1') {
+    } 
+    else if (block.type === 'divider') {
+      content = <hr className="my-4 border-t border-gray-300 dark:border-gray-600" />;
+    } 
+    else if (block.type === 'heading_1') {
       content = <h1 className="text-3xl font-semibold my-4">{renderRichText(block.heading_1.rich_text)}</h1>;
 
     } else if (block.type === 'heading_2') {
@@ -90,15 +109,8 @@ export default function NotionRenderer({ post, className }: { post: any, classNa
       childrenHandledInside = true;
 
     } else if (block.type === 'numbered_list_item') {
-      content = (
-        <ol className="list-decimal pl-5 my-2">
-          <li className="whitespace-pre-wrap">
-            {renderRichText(block.numbered_list_item.rich_text)}
-            {block.children?.map((child: any) => renderContent(child))}
-          </li>
-        </ol>
-      );
-      childrenHandledInside = true;
+      // handled in renderBlocksGroup
+      return null;
 
     } else if (block.type === 'toggle') {
       content = (
@@ -128,10 +140,6 @@ export default function NotionRenderer({ post, className }: { post: any, classNa
           </SyntaxHighlighter>
         </div>
       );
-
-    } else if (block.type === 'divider') {
-      content = <hr className="my-6 border-t border-gray-300 dark:border-gray-600" />;
-    
 
     } else if (block.type === 'quote') {
       content = (
@@ -175,6 +183,8 @@ export default function NotionRenderer({ post, className }: { post: any, classNa
       childrenHandledInside = true;
     }
 
+    
+
     return (
       <div key={block.id}>
         {content}
@@ -183,11 +193,43 @@ export default function NotionRenderer({ post, className }: { post: any, classNa
     );
   };
 
+  const renderBlocksGroup = (blocks: any[]) => {
+    const elements: React.ReactNode[] = [];
+    let i = 0;
+  
+    while (i < blocks.length) {
+      if (blocks[i].type === 'numbered_list_item') {
+        const listItems: any[] = [];
+        while (i < blocks.length && blocks[i].type === 'numbered_list_item') {
+          listItems.push(blocks[i]);
+          i++;
+        }
+  
+        elements.push(
+          <ol key={listItems[0].id} className="list-decimal pl-5 my-2">
+            {listItems.map((block: any) => (
+              <li key={block.id} className="whitespace-pre-wrap">
+                {renderRichText((block as any).numbered_list_item.rich_text)}
+                {(block.children ?? []).map((child: any) => renderContent(child))}
+              </li>
+            ))}
+          </ol>
+        );
+      } else {
+        elements.push(renderContent(blocks[i], i));
+        i++;
+      }
+    }
+  
+    return elements;
+  };
+  
+
   return (
     <div className={`font-stylish text-lg leading-relaxed ${className}`}>
       <h1 className="text-5xl font-bold mb-6">{post.title}</h1>
       {post.content?.blocks?.length > 0 ? (
-        post.content.blocks.map((block: any) => renderContent(block))
+        <>{renderBlocksGroup(post.content.blocks)}</>
       ) : (
         <p>내용이 없습니다.</p>
       )}
