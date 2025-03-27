@@ -129,6 +129,10 @@ export default function NotionRenderer({ post, className }: { post: any, classNa
         </div>
       );
 
+    } else if (block.type === 'divider') {
+      content = <hr className="my-6 border-t border-gray-300 dark:border-gray-600" />;
+    
+
     } else if (block.type === 'quote') {
       content = (
         <blockquote className="border-l-4 pl-4 italic my-4 whitespace-pre-wrap">
