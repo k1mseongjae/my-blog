@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import { fetchPostsFromNotion } from '@/lib/notion'
 import NotionRenderer from 'components/notion-renderer'
 import Comment from 'components/comment'
+import BgmPlayer from '@/components/BgmPlayer'
 // import { baseUrl } from 'app/sitemap'
 
 export const runtime = 'edge'
@@ -67,7 +68,7 @@ export default async function Blog({ params }: { params: { slug: string } }) {
           }),
         }}
       />
-      
+      {post.bgm && <BgmPlayer src={post.bgm} />}
       <NotionRenderer post={post}/>
       <Comment />
      

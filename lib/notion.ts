@@ -84,6 +84,7 @@ export async function fetchPostsFromNotion() {
         category: page.properties.category?.select?.name || 'no-category',
         description: page.properties.description?.rich_text[0]?.plain_text || 'no description',
         content: { blocks }, // children까지 다 채워진 상태
+        bgm: page.properties.bgm?.rich_text?.[0]?.plain_text || null, 
       };
     })
   );

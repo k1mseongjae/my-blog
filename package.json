@@ -21,6 +21,7 @@
     "dotenv": "^16.4.7",
     "framer-motion": "^12.5.0",
     "geist": "1.2.2",
+    "lucide-react": "^0.484.0",
     "next": "^14.2.25",
     "next-mdx-remote": "^4.4.1",
     "next-themes": "^0.3.0",
