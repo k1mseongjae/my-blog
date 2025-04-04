@@ -89,15 +89,61 @@ export default function NotionRenderer({ post, className }: { post: any, classNa
       content = <hr className="my-4 border-t border-gray-300 dark:border-gray-600" />;
     } 
     else if (block.type === 'heading_1') {
-      content = <h1 className="text-3xl font-semibold my-4">{renderRichText(block.heading_1.rich_text)}</h1>;
+      content = block.heading_1.is_toggleable ? (
+        <details className="my-4">
+          <summary className="cursor-pointer text-3xl font-semibold">
+            {renderRichText(block.heading_1.rich_text)}
+          </summary>
+          <div className="pl-4">
+            {block.children?.map((child: any) => renderContent(child))}
+          </div>
+        </details>
+      ) : (
+        <h1 className="text-3xl font-semibold my-4">
+          {renderRichText(block.heading_1.rich_text)}
+        </h1>
+      );
+      childrenHandledInside = block.heading_1.is_toggleable;
+    }
+    
+    else if (block.type === 'heading_2') {
+      content = block.heading_2.is_toggleable ? (
+        <details className="my-4">
+          <summary className="cursor-pointer text-2xl font-semibold">
+            {renderRichText(block.heading_2.rich_text)}
+          </summary>
+          <div className="pl-4">
+            {block.children?.map((child: any) => renderContent(child))}
+          </div>
+        </details>
+      ) : (
+        <h2 className="text-2xl font-semibold my-4">
+          {renderRichText(block.heading_2.rich_text)}
+        </h2>
+      );
+      childrenHandledInside = block.heading_2.is_toggleable;
+    }
+    
+    else if (block.type === 'heading_3') {
+      content = block.heading_3.is_toggleable ? (
+        <details className="my-4">
+          <summary className="cursor-pointer text-xl font-semibold">
+            {renderRichText(block.heading_3.rich_text)}
+          </summary>
+          <div className="pl-4">
+            {block.children?.map((child: any) => renderContent(child))}
+          </div>
+        </details>
+      ) : (
+        <h3 className="text-xl font-semibold my-4">
+          {renderRichText(block.heading_3.rich_text)}
+        </h3>
+      );
+      childrenHandledInside = block.heading_3.is_toggleable;
+    
+    
 
-    } else if (block.type === 'heading_2') {
-      content = <h2 className="text-2xl font-semibold my-4">{renderRichText(block.heading_2.rich_text)}</h2>;
-
-    } else if (block.type === 'heading_3') {
-      content = <h3 className="text-xl font-semibold my-4">{renderRichText(block.heading_3.rich_text)}</h3>;
-
-    } else if (block.type === 'bulleted_list_item') {
+    }else if (block.type === 'bulleted_list_item') {
       content = (
         <ul className="list-disc pl-5 my-2">
           <li className="whitespace-pre-wrap">
