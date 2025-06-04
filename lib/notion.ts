@@ -98,7 +98,7 @@ export async function fetchSinglePost(slug: string) {
   if (!page) return null;
 
   // 메타데이터 추출
-  const post = {
+  const post: any = {
     id: page.id,
     title: page.properties.Name?.title[0]?.plain_text || 'No Title',
     slug: page.properties.slug?.rich_text[0]?.plain_text || 'no-slug',
@@ -107,7 +107,7 @@ export async function fetchSinglePost(slug: string) {
     description: page.properties.description?.rich_text[0]?.plain_text || 'no description',
     image: page.properties.image?.files[0]?.file?.url || page.properties.image?.files[0]?.external?.url || null,
     bgm: page.properties.bgm?.rich_text?.[0]?.plain_text || null,
-    content: { blocks: [] },
+    content: { blocks: [] as any[] },
   };
 
   // content 필드에서 Notion 페이지 URL 확인
