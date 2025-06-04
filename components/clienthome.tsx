@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'  
 import { BlogPosts } from 'components/posts'
 import { Typewriter } from 'react-simple-typewriter'
 
@@ -33,7 +34,14 @@ export default function ClientHome({ posts }: { posts: any }) {
 
       <div className="text-2xl font-dongle my-8">
         <BlogPosts posts={posts} />
+        <Link href="/blog" className="inline-block mt-4 text-xl text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">
+          더 많은 글 보기 →
+        </Link>
       </div>
+
+      
     </section>
+
+    
   )
 }
