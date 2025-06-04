@@ -1,21 +1,19 @@
 import { notFound } from 'next/navigation'
-import { fetchPostsFromNotion } from '@/lib/notion'
+import { fetchPostsMetadata, fetchSinglePost } from '@/lib/notion'
 import NotionRenderer from 'components/notion-renderer'
 import Comment from 'components/comment'
 import BgmPlayer from '@/components/BgmPlayer'
-// import { baseUrl } from 'app/sitemap'
 
 export const runtime = 'edge'
 const baseUrl = 'https://kimsongje.com';
 
 export async function generateStaticParams() {
-  const posts = await fetchPostsFromNotion()
+  const posts = await fetchPostsMetadata()
   return posts.map((post) => ({ slug: post.slug }))
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const posts = await fetchPostsFromNotion()
-  const post = posts.find((p) => p.slug === params.slug)
+  const post = await fetchSinglePost(params.slug)
 
   if (!post) return
 
@@ -44,8 +42,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 export default async function Blog({ params }: { params: { slug: string } }) {
-  const posts = await fetchPostsFromNotion()
-  const post = posts.find((p) => p.slug === params.slug)
+  const post = await fetchSinglePost(params.slug)
 
   if (!post) notFound()
 
@@ -69,9 +66,8 @@ export default async function Blog({ params }: { params: { slug: string } }) {
         }}
       />
       {post.bgm && <BgmPlayer src={post.bgm} />}
-      <NotionRenderer post={post}/>
+      <NotionRenderer post={post} className="custom-scrollbar"/>
       <Comment />
-     
     </section>
   )
 }

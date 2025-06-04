@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import { fetchPostsFromNotion } from '@/lib/notion'
-import { BlogPosts } from '@/components/posts' // ✅ BlogPosts 올바르게 가져오기
+import { fetchPostsMetadata } from '@/lib/notion'
+import { BlogPosts } from '@/components/posts'
 
 export const metadata = {
   title: 'Blog',
@@ -8,7 +8,7 @@ export const metadata = {
 }
 
 export default async function Page() {
-  const posts = await fetchPostsFromNotion() // ✅ Notion에서 데이터 가져오기
+  const posts = await fetchPostsMetadata() // ✅ 메타데이터만 가져오기
 
   return (
     <section>

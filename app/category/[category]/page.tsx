@@ -1,11 +1,11 @@
-import { fetchPostsFromNotion } from '@/lib/notion'
+import { fetchPostsMetadata } from '@/lib/notion'
 import Link from 'next/link'
 
 export default async function CategoryPage({ params }: { params: { category: string } }) {
   const { category } = params
 
-  // Notion에서 fetch
-  const posts = await fetchPostsFromNotion()
+  // 메타데이터만 fetch
+  const posts = await fetchPostsMetadata()
   const filteredPosts = posts.filter((post) => post.category === category)
 
   if (filteredPosts.length === 0) return <div>No posts in this category</div>
@@ -26,7 +26,7 @@ export default async function CategoryPage({ params }: { params: { category: str
 }
 
 export async function generateStaticParams() {
-  const posts = await fetchPostsFromNotion()
+  const posts = await fetchPostsMetadata()
   const categories = [...new Set(posts.map((post) => post.category))]
   return categories.map((category) => ({ category }))
 }

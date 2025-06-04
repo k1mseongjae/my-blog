@@ -155,6 +155,45 @@ table {
   text-wrap: balance;
 }
 
+/* 테이블 스크롤바 항상 표시 */
+table::-webkit-scrollbar {
+  height: 10px;
+  display: block !important;
+}
+
+table::-webkit-scrollbar-thumb {
+  background-color: #9ca3af;
+  border-radius: 5px;
+}
+
+table::-webkit-scrollbar-track {
+  background-color: #f3f4f6;
+  border-radius: 5px;
+}
+
+@media (prefers-color-scheme: dark) {
+  table::-webkit-scrollbar-track {
+    background-color: #1f2937;
+  }
+  
+  table::-webkit-scrollbar-thumb {
+    background-color: #4b5563;
+  }
+}
+
+/* Firefox용 스크롤바 */
+table {
+  scrollbar-width: thin;
+  scrollbar-color: #9ca3af #f3f4f6;
+}
+
+@media (prefers-color-scheme: dark) {
+  table {
+    scrollbar-color: #4b5563 #1f2937;
+  }
+}
+
+/* 커스텀 스크롤바 클래스 */
 .custom-scrollbar::-webkit-scrollbar {
   height: 8px;
 }
