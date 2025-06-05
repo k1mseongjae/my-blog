@@ -24,7 +24,7 @@ export default function BgmPlayer({ src }: { src: string }) {
       </audio>
 
       <button onClick={togglePlay}>
-        {playing ? '⏸ 멈춤' : '▶️ 재생'}
+        {playing ? '⏸ 멈춤' : '▶ 재생'}
       </button>
 
       <span className="text-sm text-gray-800 dark:text-gray-200 font-medium">BGM</span>
