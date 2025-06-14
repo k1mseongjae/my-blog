@@ -1,5 +1,5 @@
 import { fetchPostsMetadata } from '@/lib/notion'
-import Link from 'next/link'
+import CategoryPageClient from '@/components/category-page-client'
 
 export default async function CategoryPage({ params }: { params: { category: string } }) {
   const { category } = params
@@ -10,19 +10,7 @@ export default async function CategoryPage({ params }: { params: { category: str
 
   if (filteredPosts.length === 0) return <div>No posts in this category</div>
 
-  return (
-    <section>
-      <h1 className="text-3xl font-kiranghaerang capitalize mb-6 ">{category} 카테고리</h1>
-      {filteredPosts.map((post) => (
-        <div key={post.slug} className="my-4 bg-neutral-200 dark:bg-zinc-700 p-4 rounded-lg">
-          <Link href={`/blog/${post.slug}`} className="text-2xl font-dongle hover:underline">
-            {post.title}
-          </Link>
-          <p className="text-gray-500 font-dongle text-2xl">{post.date}</p>
-        </div>
-      ))}
-    </section>
-  )
+  return <CategoryPageClient category={category} posts={filteredPosts} />
 }
 
 export async function generateStaticParams() {
