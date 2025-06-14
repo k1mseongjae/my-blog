@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { materialDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
 
 export default function NotionRenderer({ post, className }: { post: any, className?: string }) {
   if (!post) return <div>포스트를 불러올 수 없습니다.</div>
@@ -125,7 +126,7 @@ export default function NotionRenderer({ post, className }: { post: any, classNa
         <figure className="my-4 rounded bg-gray-900 overflow-x-auto overflow-y-hidden">
           <SyntaxHighlighter
             language={block.code.language}
-            style={oneDark}
+            style={materialDark}
             wrapLongLines={false}
             PreTag="div"
             customStyle={{ fontSize: '0.75rem', padding: '0.75rem', minWidth: '100%', maxWidth: '100%' }}
