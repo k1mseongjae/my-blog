@@ -52,7 +52,7 @@ export async function fetchPostsMetadata() {
   const res = await fetch(`https://api.notion.com/v1/databases/${DATABASE_ID}/query`, {
     method: "POST",
     headers: notionHeaders,
-    next: { revalidate: 60 }, // 1분 캐싱
+    next: { revalidate: 60 },
   });
 
   if (!res.ok) throw new Error("❌ Notion fetch 실패");
@@ -65,6 +65,7 @@ export async function fetchPostsMetadata() {
     slug: page.properties.slug?.rich_text[0]?.plain_text || 'no-slug',
     date: page.properties.Date?.date?.start || 'no-date',
     category: page.properties.category?.select?.name || 'no-category',
+    subcategory: page.properties.subcategory?.select?.name || null, // ✨ 서브카테고리 추가
     description: page.properties.description?.rich_text[0]?.plain_text || 'no description',
     image: page.properties.image?.files[0]?.file?.url || page.properties.image?.files[0]?.external?.url || null,
     bgm: page.properties.bgm?.rich_text?.[0]?.plain_text || null,
@@ -104,6 +105,7 @@ export async function fetchSinglePost(slug: string) {
     slug: page.properties.slug?.rich_text[0]?.plain_text || 'no-slug',
     date: page.properties.Date?.date?.start || 'no-date',
     category: page.properties.category?.select?.name || 'no-category',
+    subcategory: page.properties.subcategory?.select?.name || null, // ✨ 서브카테고리 추가
     description: page.properties.description?.rich_text[0]?.plain_text || 'no description',
     image: page.properties.image?.files[0]?.file?.url || page.properties.image?.files[0]?.external?.url || null,
     bgm: page.properties.bgm?.rich_text?.[0]?.plain_text || null,

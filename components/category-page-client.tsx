@@ -11,15 +11,38 @@ export default function CategoryPageClient({ category, posts }: { category: stri
     post.title.toLowerCase().includes(searchTerm.toLowerCase())
   )
 
+  // 서브카테고리별로 그룹화
+  const postsBySubcategory = filteredPosts.reduce((acc: any, post: any) => {
+    const key = post.subcategory || 'uncategorized'
+    if (!acc[key]) acc[key] = []
+    acc[key].push(post)
+    return acc
+  }, {})
+
   return (
     <section>
-      <h1 className="font-bytesized text-5xl mb-8 tracking-tighter"> [{category}] </h1>
+      <h1 className="font-bytesized text-5xl mb-8 tracking-tighter">[{category}]</h1>
       
-      {/* ✅ 검색 창 추가 */}
+     {/* ✅ 서브카테고리 링크들 */}
+     <div className="flex flex-wrap gap-4 mb-6">
+        {Object.keys(postsBySubcategory).map(subcategory => (
+          subcategory !== 'uncategorized' && (
+            <Link
+              key={subcategory}
+              href={`/category/${encodeURIComponent(category)}/${encodeURIComponent(subcategory)}`}
+              className="font-dongle text-1.5xl px-4 py-2 bg-neutral-200 dark:bg-zinc-700 
+                       rounded-lg hover:bg-neutral-300 dark:hover:bg-zinc-600 transition-colors"
+            >
+              {subcategory} ({postsBySubcategory[subcategory].length})
+            </Link>
+          )
+        ))}
+      </div>
+      
+      {/* ✅ 검색 창 */}
       <div className="mb-6">
         <input
           type="text"
-          //placeholder={`${category} 카테고리에서 검색...`}
           placeholder={`게시물 제목 검색...`}
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
@@ -38,13 +61,22 @@ export default function CategoryPageClient({ category, posts }: { category: stri
         </p>
       )}
 
-      {/* ✅ 검색된 게시물 목록 */}
-      {filteredPosts.map((post) => (
-        <div key={post.slug} className="my-4 bg-neutral-200 dark:bg-zinc-700 p-4 rounded-lg">
-          <Link href={`/blog/${post.slug}`} className="text-2xl font-dongle hover:underline">
-            {post.title}
-          </Link>
-          <p className="text-gray-500 font-dongle text-2xl">{post.date}</p>
+      {/* ✅ 서브카테고리별로 게시물 표시 */}
+      {Object.entries(postsBySubcategory).map(([subcategory, subcategoryPosts]: [string, any]) => (
+        <div key={subcategory} className="mb-8">
+          {subcategory !== 'uncategorized' && (
+            <h2 className="text-xl font-dongle mb-3 text-gray-700 dark:text-gray-300">
+              [{subcategory}]
+            </h2>
+          )}
+          {subcategoryPosts.map((post: any) => (
+            <div key={post.slug} className="my-4 bg-neutral-200 dark:bg-zinc-700 p-4 rounded-lg">
+              <Link href={`/blog/${post.slug}`} className="text-2xl font-dongle hover:underline">
+                {post.title}
+              </Link>
+              <p className="text-gray-500 font-dongle text-2xl">{post.date}</p>
+            </div>
+          ))}
         </div>
       ))}
       
