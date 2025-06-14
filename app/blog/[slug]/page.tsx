@@ -4,6 +4,7 @@ import NotionRenderer from 'components/notion-renderer'
 import Comment from 'components/comment'
 import BgmPlayer from '@/components/BgmPlayer'
 
+
 export const runtime = 'edge'
 const baseUrl = 'https://kimsongje.com';
 

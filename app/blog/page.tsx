@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { fetchPostsMetadata } from '@/lib/notion'
-import { BlogPosts } from '@/components/posts'
+import SearchableBlogPosts from '@/components/searchable-blog-posts'
 
 export const metadata = {
   title: 'Blog',
@@ -24,10 +24,8 @@ export default async function Page() {
         </Link>
       </div>
 
-      {/* ✅ BlogPosts에 props로 posts 전달 */}
-      <div className="text-2xl font-dongle">
-        <BlogPosts posts={posts} />
-      </div>
+      {/* ✅ 검색 가능한 BlogPosts 컴포넌트 */}
+      <SearchableBlogPosts posts={posts} />
     </section>
   )
 }
