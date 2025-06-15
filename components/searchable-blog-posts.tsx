@@ -17,7 +17,7 @@ export default function SearchableBlogPosts({ posts }: { posts: any[] }) {
       <div className="mb-8">
         <input
           type="text"
-          placeholder="게시물 제목 검색..."
+          placeholder="제목 검색...🐥"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="w-full px-4 py-2 rounded-lg border border-neutral-300 dark:border-neutral-700 
