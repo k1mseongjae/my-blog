@@ -22,7 +22,7 @@ export default function NotionRenderer({ post, className }: { post: any, classNa
       ${text.annotations.italic ? 'italic' : ''}
       ${text.annotations.strikethrough ? 'line-through' : ''}
       ${text.annotations.underline ? 'underline' : ''}
-      ${text.annotations.code ? 'bg-gray-500 font-mono px-1 py-0.5 rounded' : ''}
+      ${text.annotations.code ? 'bg-gray-200 dark:bg-gray-500 font-mono px-1 py-0.5 rounded' : ''}
       ${colorClass}
     `;
 
