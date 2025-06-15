@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { materialDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 
 export default function NotionRenderer({ post, className }: { post: any, className?: string }) {
@@ -22,7 +22,7 @@ export default function NotionRenderer({ post, className }: { post: any, classNa
       ${text.annotations.italic ? 'italic' : ''}
       ${text.annotations.strikethrough ? 'line-through' : ''}
       ${text.annotations.underline ? 'underline' : ''}
-      ${text.annotations.code ? 'bg-gray-200 font-mono px-1 py-0.5 rounded' : ''}
+      ${text.annotations.code ? 'bg-gray-500 font-mono px-1 py-0.5 rounded' : ''}
       ${colorClass}
     `;
 
@@ -126,10 +126,10 @@ export default function NotionRenderer({ post, className }: { post: any, classNa
         <figure className="my-4 rounded bg-gray-900 overflow-x-auto overflow-y-hidden">
           <SyntaxHighlighter
             language={block.code.language}
-            style={materialDark}
+            style={oneDark}
             wrapLongLines={false}
             PreTag="div"
-            customStyle={{ fontSize: '0.75rem', padding: '0.75rem', minWidth: '100%', maxWidth: '100%' }}
+            customStyle={{ fontSize: '0.75rem', padding: '0.75rem', minWidth: '100%', maxWidth: '100%', margin: 0,}}
           >
             {codeContent}
           </SyntaxHighlighter>

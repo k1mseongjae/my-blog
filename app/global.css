@@ -65,7 +65,8 @@ html {
 }
 
 .prose pre {
-  @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-900 py-2 px-3 text-sm;
+  @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto py-2 px-3 text-sm;
+  border: none;
 }
 
 .prose code {
@@ -155,7 +156,7 @@ table {
   text-wrap: balance;
 }
 
-/* 테이블 스크롤바 항상 표시 */
+/* 테이블 스크롤바 항상 표시
 table::-webkit-scrollbar {
   height: 10px;
   display: block !important;
@@ -182,7 +183,7 @@ table::-webkit-scrollbar-track {
 }
 
 /* Firefox용 스크롤바 */
-table {
+/* table {
   scrollbar-width: thin;
   scrollbar-color: #9ca3af #f3f4f6;
 }
@@ -191,16 +192,16 @@ table {
   table {
     scrollbar-color: #4b5563 #1f2937;
   }
-}
+} */
 
 /* 커스텀 스크롤바 클래스 */
-.custom-scrollbar::-webkit-scrollbar {
+/* .custom-scrollbar::-webkit-scrollbar {
   height: 8px;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #9ca3af; /* gray-400 */
+  background-color: #9ca3af; 
   border-radius: 4px;
 }
 .custom-scrollbar::-webkit-scrollbar-track {
-  background-color: #1f2937; /* gray-800 */
-}
+  background-color: #1f2937;
+} */
