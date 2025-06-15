@@ -162,7 +162,7 @@ export default function NotionRenderer({ post, className }: { post: any, classNa
           <tbody>
             {block.children?.map((row: any) => (
               row.type === 'table_row' ? (
-                <tr key={row.id} className="border hover:bg-gray-50">
+                <tr key={row.id} className="border hover:bg-gray-50 dark:hover:bg-gray-500">
                   {row.table_row.cells.map((cell: any, idx: number) => (
                     <td key={idx} className="border p-4 text-left min-w-[80px] text-sm whitespace-nowrap">
                       {cell.map((text: any, textIdx: number) => renderRichText([text]))}
