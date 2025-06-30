@@ -1,20 +1,11 @@
 // lib/security-feed.ts
-import { NewsItem, PaperItem } from '@/types/security'
+import { NewsItem, PaperItem, MixedContentItem } from '@/types/security'
 
 interface RSSItem {
   title: string
   link: string
   description: string
   pubDate: string
-}
-
-interface DBpiaEntry {
-  title: string
-  authors: string[]
-  abstract: string
-  link: string
-  published: string
-  id: string
 }
 
 export async function getSecurityNews(limit: number): Promise<NewsItem[]> {
@@ -95,15 +86,15 @@ export async function getSecurityPapers(limit: number): Promise<PaperItem[]> {
   }
 }
 
-// 뉴스와 논문을 섞어서 반환하는 새로운 함수
-export async function getMixedSecurityContent(totalLimit: number = 3): Promise<(NewsItem | PaperItem)[]> {
+// 뉴스와 논문을 섞어서 반환하는 새로운 함수 - 반환 타입을 MixedContentItem[]로 수정
+export async function getMixedSecurityContent(totalLimit: number = 3): Promise<MixedContentItem[]> {
   const [news, papers] = await Promise.all([
     getSecurityNews(2),  // 뉴스 2개
     getSecurityPapers(1)  // 논문 1개
   ])
   
   // 타입을 구분할 수 있도록 type 필드 추가
-  const mixedContent = [
+  const mixedContent: MixedContentItem[] = [
     ...news.map(item => ({ ...item, type: 'news' as const })),
     ...papers.map(item => ({ ...item, type: 'paper' as const }))
   ]
