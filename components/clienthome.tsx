@@ -2,10 +2,15 @@
 
 import Image from 'next/image'
 import Link from 'next/link'  
-import { BlogPosts } from 'components/posts'
 import { Typewriter } from 'react-simple-typewriter'
+import SecurityFeed from './security-feed'
+import type { MixedContentItem } from '@/types/security'
 
-export default function ClientHome({ posts }: { posts: any }) {
+interface ClientHomeProps {
+  mixedContent: MixedContentItem[]
+}
+
+export default function ClientHome({ mixedContent }: ClientHomeProps) {
   return (
     <section>
       <div className="flex items-center mb-8">
@@ -32,16 +37,7 @@ export default function ClientHome({ posts }: { posts: any }) {
       <p className="text-2xl font-kiranghaerang mb-4 text-right">그의 흔적😶</p>
       <p className="text-1xl font-kiranghaerang mb-4 text-right">Since 2025</p>
 
-      <div className="text-2xl font-dongle my-8">
-        <BlogPosts posts={posts} />
-        <Link href="/blog" className="inline-block mt-4 text-xl text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">
-          더 많은 글 보기 →
-        </Link>
-      </div>
-
-      
+      <SecurityFeed content={mixedContent} />
     </section>
-
-    
   )
 }

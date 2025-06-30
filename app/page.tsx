@@ -1,13 +1,10 @@
-import { fetchPostsMetadata } from '@/lib/notion'
+// app/page.tsx
 import ClientHome from '@/components/clienthome'
+import { getMixedSecurityContent } from '@/lib/security-feed'
 
 export default async function Page() {
-  const allPosts = await fetchPostsMetadata() // 메타데이터만 가져오기
-  
-  // 날짜순으로 정렬하고 최신 3개만 선택
-  const recentPosts = allPosts
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    .slice(0, 3)
+  // 뉴스와 논문을 섞어서 3개 가져오기
+  const mixedContent = await getMixedSecurityContent(3)
 
-  return <ClientHome posts={recentPosts} />
+  return <ClientHome mixedContent={mixedContent} />
 }
