@@ -14,7 +14,7 @@ export async function getSecurityNews(limit: number): Promise<NewsItem[]> {
     // 여러 소스를 시도해볼 수 있습니다
     const sources = [
       'https://www.boannews.com/media/news_rss.xml',
-      'https://www.dailysecu.com/rss/allArticle.xml'
+      'https://www.dailysecu.com/rss/S1N2.xml'
     ]
     
     let allItems: RSSItem[] = []
