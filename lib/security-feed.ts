@@ -131,18 +131,52 @@ function parseRSS(xml: string): RSSItem[] {
   return items
 }
 
+
 function decodeHTMLEntities(text: string): string {
-  if (typeof window === 'undefined') {
-    return text
-      .replace(/&amp;/g, '&')
-      .replace(/&lt;/g, '<')
-      .replace(/&gt;/g, '>')
-      .replace(/&quot;/g, '"')
-      .replace(/&#039;/g, "'")
-      .replace(/&nbsp;/g, ' ')
+  // 더 많은 HTML 엔티티와 특수 문자 처리
+  const entities: { [key: string]: string } = {
+    '&amp;': '&',
+    '&lt;': '<',
+    '&gt;': '>',
+    '&quot;': '"',
+    '&#039;': "'",
+    '&#39;': "'",
+    '&nbsp;': ' ',
+    '&ldquo;': '"',
+    '&rdquo;': '"',
+    '&lsquo;': "'",
+    '&rsquo;': "'",
+    '&hellip;': '...',
+    '&mdash;': '—',
+    '&ndash;': '–',
+    '&copy;': '©',
+    '&reg;': '®',
+    '&trade;': '™'
   }
   
-  const textarea = document.createElement('textarea')
-  textarea.innerHTML = text
-  return textarea.value
+  let decodedText = text
+  
+  // HTML 엔티티 디코딩
+  Object.entries(entities).forEach(([entity, char]) => {
+    decodedText = decodedText.replace(new RegExp(entity, 'gi'), char)
+  })
+  
+  // 숫자 형태의 HTML 엔티티 처리 (예: &#8216; 같은 것들)
+  decodedText = decodedText.replace(/&#(\d+);/gi, (match, dec) => {
+    return String.fromCharCode(dec)
+  })
+  
+  // 16진수 형태의 HTML 엔티티 처리 (예: &#x27; 같은 것들)
+  decodedText = decodedText.replace(/&#x([0-9a-f]+);/gi, (match, hex) => {
+    return String.fromCharCode(parseInt(hex, 16))
+  })
+  
+  // 특수 따옴표를 일반 따옴표로 변환
+  decodedText = decodedText
+    .replace(/[''`]/g, "'")  // 모든 종류의 작은따옴표
+    .replace(/[""]/g, '"')   // 모든 종류의 큰따옴표
+    .replace(/…/g, '...')    // 말줄임표
+    
+  // 유니코드 정규화
+  return decodedText.normalize('NFC')
 }
