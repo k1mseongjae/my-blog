@@ -1,7 +1,7 @@
 // types/security.ts
 export interface NewsItem {
   title: string
-  description: string
+  //description: string
   link: string
   publishedAt: string
   source: string
