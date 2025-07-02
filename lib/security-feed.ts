@@ -75,28 +75,25 @@ export async function getSecurityPapers(limit: number): Promise<PaperItem[]> {
   try {
     const targetUrl = 'https://www.dbpia.co.kr/search/topSearch?searchOption=all&query=%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8';
     
-    console.log('논문 크롤링 시작:', targetUrl);
-
-    // ✨ User-Agent 헤더를 추가하여 일반 브라우저인 것처럼 요청
-    const { data } = await axios.get(targetUrl, {
+    // ✨ axios.get 대신 fetch 사용
+    const response = await fetch(targetUrl, {
+      // ✨ 이 fetch 요청은 절대 캐시하지 말라고 명시 (가장 중요)
+      cache: 'no-store', 
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
       }
     });
 
-    console.log('HTML 데이터 수신 성공');
+    // fetch로 받은 응답에서 HTML 텍스트를 추출
+    const data = await response.text();
     
     const $ = cheerio.load(data);
 
     const papers: PaperItem[] = [];
-    const listItems = $('div.item_list_box > ul.item_list > li');
-
-    // ✨ 몇 개의 논문 요소를 찾았는지 로그로 확인
-    console.log(`${listItems.length}개의 논문 요소를 찾았습니다.`);
     
-    listItems.each((index, element) => {
-      const titleElement = $(element).find('p.tit > a');
-      const authorElement = $(element).find('li.author');
+    $('.search_list_area .list_wrap .item').each((index, element) => {
+      const titleElement = $(element).find('.tit_box .tit > a');
+      const authorElement = $(element).find('.info_box .author');
       
       const title = titleElement.text().trim();
       const link = 'https://www.dbpia.co.kr' + titleElement.attr('href');
@@ -114,7 +111,6 @@ export async function getSecurityPapers(limit: number): Promise<PaperItem[]> {
       }
     });
 
-    console.log(`파싱된 논문 수: ${papers.length}개`);
     return getRandomItems(papers, limit);
 
   } catch (error) {
@@ -122,6 +118,8 @@ export async function getSecurityPapers(limit: number): Promise<PaperItem[]> {
     return [];
   }
 }
+
+
 // 뉴스와 논문을 섞어서 반환하는 새로운 함수 - 반환 타입을 MixedContentItem[]로 수정
 export async function getMixedSecurityContent(totalLimit: number = 3): Promise<MixedContentItem[]> {
   const [news, papers] = await Promise.all([
