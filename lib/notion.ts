@@ -9,6 +9,7 @@ const notionHeaders = {
 export async function fetchBlockChildren(blockId: string): Promise<any[]> {
   const res = await fetch(`https://api.notion.com/v1/blocks/${blockId}/children`, {
     headers: notionHeaders,
+    next: { revalidate: 60 },
   });
   const data = await res.json();
 
@@ -30,6 +31,7 @@ async function fetchPageBlocks(pageId: string) {
   do {
     const res = await fetch(`https://api.notion.com/v1/blocks/${pageId}/children${cursor ? `?start_cursor=${cursor}` : ''}`, {
       headers: notionHeaders,
+      next: { revalidate: 60 },
     });
     const data = await res.json();
     results = results.concat(data.results);
@@ -114,11 +116,11 @@ export async function fetchSinglePost(slug: string) {
 
   // content 필드에서 Notion 페이지 URL 확인
   const notionPageUrl = page.properties.content?.rich_text[0]?.plain_text;
-  
+
   if (notionPageUrl) {
     const pageIdMatch = notionPageUrl.match(/([a-f0-9]{32})/);
     const pageIdFromUrl = pageIdMatch ? pageIdMatch[1] : null;
-    
+
     if (pageIdFromUrl) {
       const blocks = await fetchPageBlocks(pageIdFromUrl);
       post.content = { blocks };

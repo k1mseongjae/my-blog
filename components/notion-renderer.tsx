@@ -124,13 +124,23 @@ export default function NotionRenderer({ post, className }: { post: any, classNa
       const codeContent = block.code.rich_text.map((text: any) => text.plain_text).join('');
       content = (
         <figure className="my-4 rounded bg-gray-900 overflow-x-auto overflow-y-hidden">
-          <SyntaxHighlighter
-            language={block.code.language}
+           <SyntaxHighlighter
+            language={block.code.language || 'text'}
             style={oneDark}
+            showLineNumbers={true}
             wrapLongLines={false}
             PreTag="div"
-            customStyle={{ fontSize: '0.75rem', padding: '0.75rem', minWidth: '100%', maxWidth: '100%', margin: 0,}}
+            customStyle={{ 
+              fontSize: '0.875rem', 
+              padding: '1rem', 
+              backgroundColor: '#282c34',
+              borderRadius: '0.5rem',
+              margin: 0,
+              overflow: 'auto'
+            }}
+          
           >
+          
             {codeContent}
           </SyntaxHighlighter>
           {block.code.caption?.length > 0 && (
