@@ -9,7 +9,7 @@ const notionHeaders = {
 export async function fetchBlockChildren(blockId: string): Promise<any[]> {
   const res = await fetch(`https://api.notion.com/v1/blocks/${blockId}/children`, {
     headers: notionHeaders,
-    next: { revalidate: 600 },
+    cache: 'no-store', // ✨ Ensure fresh image URLs (fix 403 error)
   });
   const data = await res.json();
 
@@ -31,7 +31,7 @@ async function fetchPageBlocks(pageId: string) {
   do {
     const res = await fetch(`https://api.notion.com/v1/blocks/${pageId}/children${cursor ? `?start_cursor=${cursor}` : ''}`, {
       headers: notionHeaders,
-      next: { revalidate: 600 },
+      cache: 'no-store', // ✨ Ensure fresh image URLs (fix 403 error)
     });
     const data = await res.json();
     results = results.concat(data.results);
