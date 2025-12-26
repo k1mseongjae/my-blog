@@ -1,6 +1,6 @@
 // lib/security-feed.ts
-import { NewsItem, PaperItem, MixedContentItem } from '@/types/security'
-import axios from 'axios';
+import { NewsItem, PaperItem, MixedContentItem } from '../types/security'
+// import axios from 'axios';
 import * as cheerio from 'cheerio';
 
 
@@ -71,51 +71,63 @@ export async function getSecurityNews(limit: number): Promise<NewsItem[]> {
 
 
 // ✨ getSecurityPapers 함수를 디버깅 기능이 추가된 코드로 교체
+// ✨ Google Scholar Scraper
 export async function getSecurityPapers(limit: number): Promise<PaperItem[]> {
   try {
-    const targetUrl = 'https://www.dbpia.co.kr/search/topSearch?searchOption=all&query=%EC%A0%95%EB%B3%B4%EB%B3%B4%ED%98%B8';
+    const query = encodeURIComponent('정보보호');
+    const targetUrl = `https://scholar.google.co.kr/scholar?hl=ko&as_sdt=0%2C5&q=${query}&btnG=`;
 
-    // ✨ axios.get 대신 fetch 사용
     const response = await fetch(targetUrl, {
-      // ✨ 이 fetch 요청은 절대 캐시하지 말라고 명시 (가장 중요)
-      // ✨ 이 fetch 요청은 절대 캐시하지 말라고 명시 (가장 중요)
       next: { revalidate: 600 },
       headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+        'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7',
+        'Referer': 'https://scholar.google.co.kr/'
       }
     });
 
-    // fetch로 받은 응답에서 HTML 텍스트를 추출
     const data = await response.text();
 
-    const $ = cheerio.load(data);
+    // Check for blocking
+    if (data.includes('recaptcha') || data.includes('detected unusual traffic')) {
+      console.error('❌ Google Scholar Blocked Request');
+      return [];
+    }
 
+    const $ = cheerio.load(data);
     const papers: PaperItem[] = [];
 
-    $('.search_list_area .list_wrap .item').each((index, element) => {
-      const titleElement = $(element).find('.tit_box .tit > a');
-      const authorElement = $(element).find('.info_box .author');
+    $('.gs_r.gs_or.gs_scl').each((index, element) => {
+      if (papers.length >= limit) return;
 
-      const title = titleElement.text().trim();
-      const link = 'https://www.dbpia.co.kr' + titleElement.attr('href');
-      const authors = authorElement.text().trim().split(',').map(name => name.trim());
+      const titleElement = $(element).find('.gs_rt');
+      const link = titleElement.find('a').attr('href');
+      const title = titleElement.text().replace('[PDF]', '').replace('[HTML]', '').trim();
+      const metaText = $(element).find('.gs_a').text().trim();
+      const abstract = $(element).find('.gs_rs').text().trim() || 'No abstract available.';
+
+      // Extract authors and likely year from meta text (e.g. "Hong, Kim - 2023 - source")
+      const metaParts = metaText.split('-');
+      const authors = metaParts[0] ? metaParts[0].split(',').map(a => a.trim()) : ['Unknown'];
+      const publishedAt = new Date().toISOString(); // Default to now as Scholar dates are fuzzy
 
       if (title && link) {
         papers.push({
           title,
           authors,
-          abstract: '크롤링을 통해 가져온 정보입니다.',
+          abstract,
           link,
-          publishedAt: new Date().toISOString(),
+          publishedAt,
           arxivId: ''
         });
       }
     });
 
-    return getRandomItems(papers, limit);
+    return papers;
 
   } catch (error) {
-    console.error('논문 크롤링 실패:', error);
+    console.error('Google Scholar scraping failed:', error);
     return [];
   }
 }
