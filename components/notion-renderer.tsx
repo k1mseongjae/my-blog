@@ -5,7 +5,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 
-export default function NotionRenderer({ post, className }: { post: any, className?: string }) {
+export default function NotionRenderer({ post, className, hideTitle = false }: { post: any, className?: string, hideTitle?: boolean }) {
   if (!post) return <div>포스트를 불러올 수 없습니다.</div>
 
   const renderRichText = (richTextArray: any[]) => richTextArray.map((text: any, idx: number) => {
@@ -124,23 +124,23 @@ export default function NotionRenderer({ post, className }: { post: any, classNa
       const codeContent = block.code.rich_text.map((text: any) => text.plain_text).join('');
       content = (
         <figure className="my-4 rounded bg-gray-900 overflow-x-auto overflow-y-hidden">
-           <SyntaxHighlighter
+          <SyntaxHighlighter
             language={block.code.language || 'text'}
             style={oneDark}
             showLineNumbers={true}
             wrapLongLines={false}
             PreTag="div"
-            customStyle={{ 
-              fontSize: '0.875rem', 
-              padding: '1rem', 
+            customStyle={{
+              fontSize: '0.875rem',
+              padding: '1rem',
               backgroundColor: '#282c34',
               borderRadius: '0.5rem',
               margin: 0,
               overflow: 'auto'
             }}
-          
+
           >
-          
+
             {codeContent}
           </SyntaxHighlighter>
           {block.code.caption?.length > 0 && (
@@ -222,7 +222,7 @@ export default function NotionRenderer({ post, className }: { post: any, classNa
 
   return (
     <div className={`font-stylish text-lg leading-relaxed ${className}`}>
-      <h1 className="text-5xl font-bold mb-6">{post.title}</h1>
+      {!hideTitle && <h1 className="text-5xl font-bold mb-6">{post.title}</h1>}
       {post.content?.blocks?.length > 0 ? renderBlocksGroup(post.content.blocks) : <p>내용이 없습니다.</p>}
     </div>
   );

@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation'
-import { fetchPostsMetadata, fetchSinglePost } from '@/lib/notion'
+import { fetchPostsMetadata, fetchPostDetail } from '@/lib/notion'
 import NotionRenderer from 'components/notion-renderer'
 import Comment from 'components/comment'
 import BgmPlayer from '@/components/BgmPlayer'
@@ -14,7 +14,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const post = await fetchSinglePost(params.slug)
+  const post = await fetchPostDetail(params.slug)
 
   if (!post) return
 
@@ -42,8 +42,11 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
+import { Suspense } from 'react'
+import PostContentFetcher from '@/components/post-content-fetcher'
+
 export default async function Blog({ params }: { params: { slug: string } }) {
-  const post = await fetchSinglePost(params.slug)
+  const post = await fetchPostDetail(params.slug)
 
   if (!post) notFound()
 
@@ -67,7 +70,15 @@ export default async function Blog({ params }: { params: { slug: string } }) {
         }}
       />
       {post.bgm && <BgmPlayer src={post.bgm} />}
-      <NotionRenderer post={post} className="custom-scrollbar"/>
+
+      {/* Title rendered immediately for better perceived performance */}
+      <h1 className="font-stylish text-5xl font-bold mb-6">{post.title}</h1>
+
+      {/* Content streamed via Suspense */}
+      <Suspense fallback={<div className="font-stylish text-lg mt-10">Loading content...</div>}>
+        <PostContentFetcher notionPageUrl={post.notionPageUrl} />
+      </Suspense>
+
       <Comment />
     </section>
   )
