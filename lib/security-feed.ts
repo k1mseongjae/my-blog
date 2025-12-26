@@ -70,9 +70,20 @@ export async function getSecurityNews(limit: number): Promise<NewsItem[]> {
 }
 
 
+// Comprehensive Security Keywords & Sources (Top Conferences Only)
+const SECURITY_KEYWORDS = [
+  // 🏆 Top Tier Conferences (Big 4) & Journals
+  'source:"IEEE Symposium on Security and Privacy"',
+  'source:"USENIX Security Symposium"',
+  'source:"ACM Conference on Computer and Communications Security"',
+  'source:"NDSS Symposium"',
+  'source:"정보보호학회논문지"', // Top Korean Journal (KIISC)
+];
+
 export async function getSecurityPapers(limit: number): Promise<PaperItem[]> {
   try {
-    const query = encodeURIComponent('정보보호');
+    const randomKeyword = SECURITY_KEYWORDS[Math.floor(Math.random() * SECURITY_KEYWORDS.length)];
+    const query = encodeURIComponent(randomKeyword);
     const targetUrl = `https://scholar.google.co.kr/scholar?hl=ko&as_sdt=0%2C5&q=${query}&btnG=`;
 
     const response = await fetch(targetUrl, {
