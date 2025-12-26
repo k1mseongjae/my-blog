@@ -70,8 +70,6 @@ export async function getSecurityNews(limit: number): Promise<NewsItem[]> {
 }
 
 
-// ✨ getSecurityPapers 함수를 디버깅 기능이 추가된 코드로 교체
-// ✨ Google Scholar Scraper
 export async function getSecurityPapers(limit: number): Promise<PaperItem[]> {
   try {
     const query = encodeURIComponent('정보보호');
@@ -144,10 +142,10 @@ export async function getMixedSecurityContent(totalLimit: number = 3): Promise<M
   const mixedContent: MixedContentItem[] = [
     ...news.map(item => ({ ...item, type: 'news' as const })),
     ...papers.map(item => ({ ...item, type: 'paper' as const }))
-  ]
+  ];
 
-  // 랜덤하게 섞기
-  return mixedContent.sort(() => Math.random() - 0.5).slice(0, totalLimit)
+  // ✨ 랜덤 섞기 제거하고 고정 순서 반환 (뉴스 2개 -> 논문 1개)
+  return mixedContent;
 }
 
 function getRandomItems<T>(array: T[], count: number): T[] {
