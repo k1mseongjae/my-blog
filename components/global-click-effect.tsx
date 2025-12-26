@@ -22,11 +22,11 @@ export default function GlobalClickEffect() {
                 {clicks.map((click) => (
                     <motion.div
                         key={click.id}
-                        initial={{ opacity: 0.8, scale: 0.2 }}
-                        animate={{ opacity: 0, scale: 2 }}
+                        initial={{ opacity: 0.8, scale: 0, x: "-50%", y: "-50%" }}
+                        animate={{ opacity: 0, scale: 2, x: "-50%", y: "-50%" }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.5, ease: "easeOut" }}
-                        className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-current text-gray-500 dark:text-gray-300"
+                        className="absolute rounded-full border-2 border-current text-gray-500 dark:text-gray-300"
                         style={{
                             left: click.x,
                             top: click.y,
