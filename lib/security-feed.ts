@@ -97,7 +97,8 @@ export async function getSecurityPapers(limit: number): Promise<PaperItem[]> {
     const papers: PaperItem[] = [];
 
     $('.gs_r.gs_or.gs_scl').each((index, element) => {
-      if (papers.length >= limit) return;
+      // Fetch all items on the page (usually 10) to create a pool for randomness
+      // if (papers.length >= limit) return; <-- Removed to allow full scanning
 
       const titleElement = $(element).find('.gs_rt');
       const link = titleElement.find('a').attr('href');
@@ -122,7 +123,8 @@ export async function getSecurityPapers(limit: number): Promise<PaperItem[]> {
       }
     });
 
-    return papers;
+    // ✨ Return random selection from the pool
+    return getRandomItems(papers, limit);
 
   } catch (error) {
     console.error('Google Scholar scraping failed:', error);
