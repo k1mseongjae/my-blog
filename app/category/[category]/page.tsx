@@ -1,5 +1,5 @@
 import { fetchPostsMetadata } from '@/lib/notion'
-import CategoryPageClient from '@/components/category-page-client'
+import CategoryPageClient from '@/components/CategoryPageClient'
 
 export default async function CategoryPage({ params }: { params: { category: string } }) {
   const { category } = params

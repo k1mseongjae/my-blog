@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import ThemeToggle from './theme'
+import ThemeToggle from './Theme'
 
 const navItems = {
   '/': {
@@ -29,12 +29,12 @@ export function Navbar() {
             {Object.entries(navItems).map(([path, { name }]) => {
               return (
                 <Link
-                key={path}
-                href={path}
-                className="transition-all transform hover:scale-110 hover:text-neutral-800 dark:hover:text-neutral-200 flex items-center relative py-1 px-2 m-1"
+                  key={path}
+                  href={path}
+                  className="transition-all transform hover:scale-110 hover:text-neutral-800 dark:hover:text-neutral-200 flex items-center relative py-1 px-2 m-1"
                 >
-                {name}
-              </Link>
+                  {name}
+                </Link>
               )
             })}
           </div>

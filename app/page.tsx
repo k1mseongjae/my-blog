@@ -1,5 +1,5 @@
 // app/page.tsx
-import ClientHome from '@/components/clienthome'
+import ClientHome from '@/components/ClientHome'
 import { getMixedSecurityContent } from '@/lib/security-feed'
 
 export const dynamic = 'force-dynamic';

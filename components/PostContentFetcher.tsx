@@ -1,5 +1,5 @@
 import { fetchPostContent } from '@/lib/notion'
-import NotionRenderer from './notion-renderer'
+import NotionRenderer from './NotionRenderer'
 
 export default async function PostContentFetcher({
     notionPageUrl

@@ -1,13 +1,13 @@
 'use client'
 
 import { useState } from 'react'
-import { BlogPosts } from '@/components/posts'
+import { BlogPosts } from '@/components/Posts'
 
 export default function SearchableBlogPosts({ posts }: { posts: any[] }) {
   const [searchTerm, setSearchTerm] = useState('')
 
   // 검색어에 따라 게시물 필터링
-  const filteredPosts = posts.filter(post => 
+  const filteredPosts = posts.filter(post =>
     post.title.toLowerCase().includes(searchTerm.toLowerCase())
   )
 

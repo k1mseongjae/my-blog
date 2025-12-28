@@ -4,8 +4,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "fetch": "node fetch-notion.js"
+    "start": "next start"
   },
   "devDependencies": {
     "@notionpresso/cli": "^0.0.2",
@@ -19,7 +18,6 @@
     "@types/react": "18.2.55",
     "@types/react-dom": "18.2.19",
     "@types/react-syntax-highlighter": "^15.5.13",
-    "axios": "^1.13.2",
     "cheerio": "^1.1.2",
     "d3": "^7.9.0",
     "dotenv": "^16.4.7",

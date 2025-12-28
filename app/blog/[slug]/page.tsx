@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import { fetchPostsMetadata, fetchPostDetail } from '@/lib/notion'
-import NotionRenderer from 'components/notion-renderer'
-import Comment from 'components/comment'
+import NotionRenderer from 'components/NotionRenderer'
+import Comment from 'components/Comment'
 import BgmPlayer from '@/components/BgmPlayer'
 
 
@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 import { Suspense } from 'react'
-import PostContentFetcher from '@/components/post-content-fetcher'
+import PostContentFetcher from '@/components/PostContentFetcher'
 
 export default async function Blog({ params }: { params: { slug: string } }) {
   const post = await fetchPostDetail(params.slug)

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { fetchPostsMetadata } from '@/lib/notion'
-import SearchableBlogPosts from '@/components/searchable-blog-posts'
+import SearchableBlogPosts from '@/components/SearchableBlogPosts'
 
 export const metadata = {
   title: 'Blog',

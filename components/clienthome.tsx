@@ -1,9 +1,9 @@
 'use client'
 
 import Image from 'next/image'
-import Link from 'next/link'  
+import Link from 'next/link'
 import { Typewriter } from 'react-simple-typewriter'
-import SecurityFeed from './security-feed'
+import SecurityFeed from './SecurityFeed'
 import type { MixedContentItem } from '@/types/security'
 
 interface ClientHomeProps {
