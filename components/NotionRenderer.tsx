@@ -13,7 +13,7 @@ export default function NotionRenderer({ post, className, hideTitle = false }: {
     const colorMap: Record<string, string> = {
       red: 'text-red-500', orange: 'text-orange-500', yellow: 'text-yellow-500',
       green: 'text-green-500', blue: 'text-blue-500', purple: 'text-purple-500',
-      pink: 'text-pink-500', brown: 'text-amber-700', gray: 'text-gray-500',
+      pink: 'text-pink-500', brown: 'text-amber-700', gray: 'text-gray-400',
     };
     const colorClass = color && color !== 'default' ? colorMap[color.replace('_background', '')] || '' : '';
 
@@ -22,7 +22,7 @@ export default function NotionRenderer({ post, className, hideTitle = false }: {
       ${text.annotations.italic ? 'italic' : ''}
       ${text.annotations.strikethrough ? 'line-through' : ''}
       ${text.annotations.underline ? 'underline' : ''}
-      ${text.annotations.code ? 'bg-gray-200 dark:bg-gray-500 font-mono px-1 py-0.5 rounded' : ''}
+      ${text.annotations.code ? 'bg-gray-200 dark:bg-gray-500 px-1 py-0.5 rounded' : ''}
       ${colorClass}
     `;
 
